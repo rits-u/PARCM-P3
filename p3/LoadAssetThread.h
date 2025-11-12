@@ -1,10 +1,10 @@
 #pragma once
 
 #include <iostream>
-#include "IETThread.h"
-#include "IExecutionEvent.h"
-#include "TextureManager.h"
-#include "IWorkerAction.h"
+#include "ThreadTool/IETThread.h"
+#include "ThreadTool/IExecutionEvent.h"
+#include "Manager/TextureManager.h"
+#include "ThreadTool/IWorkerAction.h"
 #include <semaphore>
 
 class LoadAssetThread : public IWorkerAction 

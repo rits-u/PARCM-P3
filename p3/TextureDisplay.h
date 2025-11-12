@@ -9,7 +9,7 @@ class IconObject;
 /// Class that deals with displaying of streamed textures
 /// </summary> 
 
-#include "ThreadPool.h"
+#include "ThreadTool/ThreadPool.h"
 
 class TextureDisplay: public AGameObject, public IExecutionEvent
 {

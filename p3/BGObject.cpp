@@ -1,6 +1,6 @@
 #include "BGObject.h"
 #include <iostream>
-#include "TextureManager.h"
+#include "Manager/TextureManager.h"
 #include "BaseRunner.h"
 
 BGObject::BGObject(string name) : AGameObject(name)

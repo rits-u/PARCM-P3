@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../IWorkerAction.h"
-#include "../IExecutionEvent.h"
+#include "../ThreadTool/IWorkerAction.h"
+#include "../ThreadTool/IExecutionEvent.h"
 #include <semaphore>
 
 
@@ -18,6 +18,5 @@ private:
 	int id = 0;
 	void OnStartTask() override;
 	IExecutionEvent* OnFinished;
-	std::mutex guard;
 };
 

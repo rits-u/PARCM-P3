@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include  "../IWorkerAction.h"
+#include  "../ThreadTool/IWorkerAction.h"
 
 class SpriteMovement : public IWorkerAction
 {

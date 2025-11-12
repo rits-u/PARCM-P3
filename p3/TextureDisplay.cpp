@@ -1,8 +1,8 @@
 #include "TextureDisplay.h"
 #include <iostream>
-#include "TextureManager.h"
+#include "Manager/TextureManager.h"
 #include "BaseRunner.h"
-#include "GameObjectManager.h"
+#include "Manager/GameObjectManager.h"
 #include "IconObject.h"
 
 

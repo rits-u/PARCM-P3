@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../IExecutionEvent.h"
-#include "../ThreadPool.h"
+#include "../ThreadTool/IExecutionEvent.h"
+#include "../ThreadTool/ThreadPool.h"
 #include "SpriteMovement.h"
 #include "../AGameObject.h"
 

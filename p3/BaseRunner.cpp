@@ -1,7 +1,7 @@
 #include "BaseRunner.h"
-#include  "GameObjectManager.h"
+#include  "Manager/GameObjectManager.h"
 #include "BGObject.h"
-#include "TextureManager.h"
+#include "Manager/TextureManager.h"
 #include "TextureDisplay.h"
 #include "FPSCounter.h"
 
