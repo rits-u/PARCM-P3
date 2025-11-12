@@ -24,6 +24,7 @@ class GameObjectManager
 		void addObject(AGameObject* gameObject);
 		void deleteObject(AGameObject* gameObject);
 		void deleteObjectByName(AGameObject::String name);
+		void deleteAllObjectsInScene();
 
 	private:
 		GameObjectManager() {};

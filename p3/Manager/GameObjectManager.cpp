@@ -90,3 +90,15 @@ void GameObjectManager::deleteObjectByName(AGameObject::String name) {
 		this->deleteObject(object);
 	}
 }
+
+void GameObjectManager::deleteAllObjectsInScene()
+{
+	for (int i = 0; i < this->gameObjectList.size(); i++)
+	{
+		delete this->gameObjectList[i];
+	}
+
+	this->gameObjectList.clear();
+	this->gameObjectList.shrink_to_fit();
+	this->gameObjectMap.clear();
+}

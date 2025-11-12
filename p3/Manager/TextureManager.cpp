@@ -25,7 +25,7 @@ TextureManager::TextureManager()
 void TextureManager::loadFromAssetList()
 {
 	std::cout << "[TextureManager] Reading from asset list" << std::endl;
-	std::ifstream stream("Media/assets.txt");
+	std::ifstream stream("Media/P3-assets.txt");
 	String path;
 
 	while(std::getline(stream, path))

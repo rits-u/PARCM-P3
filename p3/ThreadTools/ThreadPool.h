@@ -17,9 +17,10 @@ public:
 	void StopScheduling();
 
 	void ScheduleTasks(IWorkerAction* task);
+	void run() override;
 
 private:
-	void run() override;
+	
 	void OnFinishedTask(int id) override;
 
 	bool isRunning = false;

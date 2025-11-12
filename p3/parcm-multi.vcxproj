@@ -160,6 +160,11 @@
     <ClInclude Include="IWorkerAction.h" />
     <ClInclude Include="LoadAssetThread.h" />
     <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="Scenes\AScene.h" />
+    <ClInclude Include="Scenes\LoadingScene.h" />
+    <ClInclude Include="SpriteScript\VtuberSprite.h" />
+    <ClInclude Include="SpriteScript\SpriteMovement.h" />
+    <ClInclude Include="SpriteScript\SpriteRunner.h" />
     <ClInclude Include="StringUtils.h" />
     <ClInclude Include="TextureDisplay.h" />
     <ClInclude Include="TextureManager.h" />
@@ -177,6 +182,11 @@
     <ClCompile Include="LoadAssetThread.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="Scenes\AScene.cpp" />
+    <ClCompile Include="Scenes\LoadingScene.cpp" />
+    <ClCompile Include="SpriteScript\VtuberSprite.cpp" />
+    <ClCompile Include="SpriteScript\SpriteMovement.cpp" />
+    <ClCompile Include="SpriteScript\SpriteRunner.cpp" />
     <ClCompile Include="StringUtils.cpp" />
     <ClCompile Include="TextureDisplay.cpp" />
     <ClCompile Include="TextureManager.cpp" />

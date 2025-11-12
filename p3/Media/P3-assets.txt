@@ -1,0 +1,2 @@
+Media/Textures/Desert.png
+Media/Characters/Suisei_sheet.png
