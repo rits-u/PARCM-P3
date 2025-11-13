@@ -12,6 +12,7 @@ public:
 	BaseRunner();
 	void run();
 
+
 private:
 	
 	sf::RenderWindow		window;

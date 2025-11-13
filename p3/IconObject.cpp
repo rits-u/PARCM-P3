@@ -1,7 +1,7 @@
 #include "IconObject.h"
 #include <iostream>
 #include "BaseRunner.h"
-#include "TextureManager.h"
+#include "Manager/TextureManager.h"
 
 IconObject::IconObject(String name, int textureIndex): AGameObject(name)
 {

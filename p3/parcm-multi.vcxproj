@@ -156,6 +156,7 @@
     <ClInclude Include="IconObject.h" />
     <ClInclude Include="LoadAssetThread.h" />
     <ClInclude Include="Manager\GameObjectManager.h" />
+    <ClInclude Include="Manager\SceneManager.h" />
     <ClInclude Include="Manager\TextureManager.h" />
     <ClInclude Include="Scenes\AScene.h" />
     <ClInclude Include="Scenes\LoadingScene.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="LoadAssetThread.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager\GameObjectManager.cpp" />
+    <ClCompile Include="Manager\SceneManager.cpp" />
     <ClCompile Include="Manager\TextureManager.cpp" />
     <ClCompile Include="Scenes\AScene.cpp" />
     <ClCompile Include="Scenes\LoadingScene.cpp" />

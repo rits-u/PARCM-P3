@@ -14,13 +14,12 @@ void SpriteRunner::initialize()
 	// Assigning tasks to each Component
 
 	//SPRITES
-	for (int i = 0; i < 1; i++)
-	{
-		//Assign the pool with the task
-		SpriteMovement* task = new SpriteMovement();
-		spritePool.ScheduleTasks(task);
+	
+	//Assign the pool with the task
+	SpriteMovement* task = new SpriteMovement("Suisei");
+	spritePool.ScheduleTasks(task);
 
-	}
+	
 
 	/*Start the pool*/
 	startPool();

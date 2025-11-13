@@ -2,8 +2,10 @@
 #include  "Manager/GameObjectManager.h"
 #include "BGObject.h"
 #include "Manager/TextureManager.h"
+#include "Manager/SceneManager.h"
 #include "TextureDisplay.h"
 #include "FPSCounter.h"
+#include "Scenes/LoadingScene.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -27,6 +29,10 @@ BaseRunner::BaseRunner() :
 
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
+
+
+	SceneManager::getInstance()->registerScene(new LoadingScene());
+	SceneManager::getInstance()->loadScene(SceneManager::LOADING_SCENE_NAME);
 }
 
 void BaseRunner::run() {
@@ -46,6 +52,7 @@ void BaseRunner::run() {
 		}
 
 		render();
+		SceneManager::getInstance()->checkLoadScene();
 	}
 }
 
