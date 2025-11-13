@@ -1,6 +1,7 @@
 #pragma once
 #include "AScene.h"
 #include "../SpriteScript/SpriteRunner.h"
+#include "../FPSCounter.h"
 
 class LoadingScene : public AScene
 {

@@ -21,14 +21,13 @@ BaseRunner::BaseRunner() :
 	window.setFramerateLimit(FRAME_RATE);
 
 	//load objects
-	BGObject* bgObject = new BGObject("BGObject");
+	/*BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
 	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
+	GameObjectManager::getInstance()->addObject(display);*/
 
-	FPSCounter* fpsCounter = new FPSCounter();
-	GameObjectManager::getInstance()->addObject(fpsCounter);
+	
 
 
 	SceneManager::getInstance()->registerScene(new LoadingScene());

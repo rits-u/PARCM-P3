@@ -1,9 +1,9 @@
 #include <fstream>
 #include <iostream>
 #include <filesystem>
-#include "TextureManager.h"
-#include "StringUtils.h"
-#include "IETThread.h"
+#include "../Manager/TextureManager.h"
+#include "../Utils/StringUtils.h"
+#include "../ThreadTool/IETThread.h"
 
 //a singleton class
 TextureManager* TextureManager::sharedInstance = NULL;
