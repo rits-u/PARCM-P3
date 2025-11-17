@@ -7,6 +7,10 @@
 #include "../Manager/TextureManager.h"
 #include "../AGameObject.h"
 
+#include "../rapidjson-1.1.0/include/rapidjson/filereadstream.h"
+#include "../rapidjson-1.1.0/include/rapidjson/document.h"
+#include "../rapidjson-1.1.0/include/rapidjson/rapidjson.h"
+
 class SpriteMovement : public AGameObject, public IWorkerAction
 {
 public:
@@ -20,5 +24,15 @@ private:
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
 	//void draw(sf::RenderWindow* targetWindow) override;
+
+	/*For sprite visual movement*/
+	void prepareVtuberSpriteSheet();
+	std::unordered_map<int, std::vector<int>> tuberList;
+	std::vector<int> coord;
+	float switchTimer = 1.0f, currTime = 0.0f;
+	bool bSwitch = false;
+	sf::IntRect currSprite;
+	int counter = 0;
+	std::vector<int> traverseList(int counter);
 };
 

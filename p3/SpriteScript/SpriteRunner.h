@@ -5,17 +5,12 @@
 #include "SpriteMovement.h"
 #include "../AGameObject.h"
 #include "../Manager/GameObjectManager.h"
-
-
 class SpriteRunner : public AGameObject, public IExecutionEvent
 {
 public:
 
 	//Holds sprites for Suisei, Pekora, Ollie, Fauna and Aqua 5 Threads
 	ThreadPool spritePool = ThreadPool(1);
-
-	//0-4
-	int SpriteCounter = 0;
 
 	SpriteRunner();
 
@@ -30,6 +25,8 @@ public:
 	void initialize() override;
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
-	//void draw(sf::RenderWindow* targetWindow) override;
+
+
+
 };
 

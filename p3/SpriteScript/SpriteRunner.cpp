@@ -1,6 +1,8 @@
 #include "SpriteRunner.h"
 
-SpriteRunner::SpriteRunner() : AGameObject("SpriteRunner") {}
+SpriteRunner::SpriteRunner() : AGameObject("SpriteRunner") 
+{
+}
 
 SpriteRunner::~SpriteRunner()
 {
@@ -32,7 +34,7 @@ void SpriteRunner::startPool()
 {
 	/*Starts the first pool*/
 	spritePool.StartScheduling();
-	//spritePool.run();
+	spritePool.run();
 }
 
 void SpriteRunner::OnFinishedExecution()
@@ -46,3 +48,4 @@ void SpriteRunner::update(sf::Time deltaTime)
 	
 }
 //void SpriteRunner::draw(sf::RenderWindow* targetWindow) {}
+
