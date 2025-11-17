@@ -52,7 +52,7 @@ void TextureDisplay::update(sf::Time deltaTime)
 	}
 }
 
-void TextureDisplay::OnFinishedExecution(int _id)
+void TextureDisplay::OnFinishedExecution()
 {
 	this->spawnObject();
 }

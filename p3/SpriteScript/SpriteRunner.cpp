@@ -13,11 +13,14 @@ void SpriteRunner::initialize()
 {
 	// Assigning tasks to each Component
 
+	//Load the 
+
 	//SPRITES
 	
 	//Assign the pool with the task
-	SpriteMovement* task = new SpriteMovement("Suisei");
+	SpriteMovement* task = new SpriteMovement("SuiseiWalk", this);
 	spritePool.ScheduleTasks(task);
+	GameObjectManager::getInstance()->addObject(task);
 
 	
 
@@ -29,14 +32,17 @@ void SpriteRunner::startPool()
 {
 	/*Starts the first pool*/
 	spritePool.StartScheduling();
-	spritePool.run();
+	//spritePool.run();
 }
 
-void SpriteRunner::OnFinishedExecution(int _currIdNum)
+void SpriteRunner::OnFinishedExecution()
 {
-	std::clog << "Sprite Number:  " << _currIdNum << "IS DONE!\n";
+	std::clog << "Sprite is done Running\n";
 }
 
 void SpriteRunner::processInput(sf::Event event) {}
-void SpriteRunner::update(sf::Time deltaTime) {}
+void SpriteRunner::update(sf::Time deltaTime) 
+{
+	
+}
 //void SpriteRunner::draw(sf::RenderWindow* targetWindow) {}

@@ -17,21 +17,22 @@ BaseRunner::BaseRunner() :
 	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "HO: Entity Component", sf::Style::Close) {
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
+	TextureManager::getInstance()->loadSprites();
 
 	window.setFramerateLimit(FRAME_RATE);
 
 	//load objects
-	/*BGObject* bgObject = new BGObject("BGObject");
+	BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
 	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);*/
+	GameObjectManager::getInstance()->addObject(display);
 
-	
+	FPSCounter* counter = new FPSCounter();
+	GameObjectManager::getInstance()->addObject(counter);
 
-
-	SceneManager::getInstance()->registerScene(new LoadingScene());
-	SceneManager::getInstance()->loadScene(SceneManager::LOADING_SCENE_NAME);
+	SpriteRunner* runner = new SpriteRunner();
+	GameObjectManager::getInstance()->addObject(runner);
 }
 
 void BaseRunner::run() {

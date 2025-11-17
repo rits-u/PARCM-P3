@@ -2,6 +2,6 @@
 class IExecutionEvent
 {
 public: 
-	virtual void OnFinishedExecution(int _spriteId) = 0;
+	virtual void OnFinishedExecution() = 0;
 };
 

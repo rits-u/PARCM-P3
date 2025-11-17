@@ -4,6 +4,7 @@
 #include "../ThreadTool/ThreadPool.h"
 #include "SpriteMovement.h"
 #include "../AGameObject.h"
+#include "../Manager/GameObjectManager.h"
 
 
 class SpriteRunner : public AGameObject, public IExecutionEvent
@@ -13,13 +14,16 @@ public:
 	//Holds sprites for Suisei, Pekora, Ollie, Fauna and Aqua 5 Threads
 	ThreadPool spritePool = ThreadPool(1);
 
+	//0-4
+	int SpriteCounter = 0;
+
 	SpriteRunner();
 
 	//Starts the pool for the sprites
 	void startPool();
 
 	//When they are done running in screen
-	void OnFinishedExecution(int _spriteId) override;
+	void OnFinishedExecution() override;
 
 	//AGameObject overrides
 	~SpriteRunner();

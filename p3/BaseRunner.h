@@ -6,8 +6,8 @@ class BaseRunner : private sf::NonCopyable
 {
 public:
 	static const sf::Time	TIME_PER_FRAME;
-	static const int WINDOW_WIDTH = 1400;
-	static const int WINDOW_HEIGHT = 800;
+	static const int WINDOW_WIDTH = 500;//1400;
+	static const int WINDOW_HEIGHT = 500;//800;
 
 	BaseRunner();
 	void run();
