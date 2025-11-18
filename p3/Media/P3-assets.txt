@@ -1,3 +1,4 @@
 Media/Textures/Desert.png
 Media/Characters/Suisei_sheet.png
 Media/Textures/HoloCureBG.png
+Media/Textures/HalloweenCastleBG.png

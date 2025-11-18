@@ -21,8 +21,17 @@ BaseRunner::BaseRunner() :
 	window.setFramerateLimit(FRAME_RATE);
 
 	//load objects
-	BGObject* bgObject = new BGObject("BGObject");
-	GameObjectManager::getInstance()->addObject(bgObject);
+	//BGObject* bgObject = new BGObject("BGObject");
+	//GameObjectManager::getInstance()->addObject(bgObject);
+
+
+
+	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG");
+	GameObjectManager::getInstance()->addObject(loadingScreenBG);
+
+	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG");
+	GameObjectManager::getInstance()->addObject(gameSceneBG);
+	gameSceneBG->setActiveSelf(false);
 
 	TextureDisplay* display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);

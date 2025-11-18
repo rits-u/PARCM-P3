@@ -10,6 +10,7 @@ TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
 	this->loadedAsset = 0;
 	this->assetsTotal = 47;
+	this->mode = FADE_OUT;
 }
 
 void TextureDisplay::initialize()
@@ -52,17 +53,35 @@ void TextureDisplay::update(sf::Time deltaTime)
 		this->ticks = 0;
 		
 	}
+
+	if (this->isFading)
+		fadeTransition(deltaTime);
+
+}
+
+void TextureDisplay::draw(sf::RenderWindow* targetWindow)
+{
+	sf::RectangleShape fadeRect;
+	fadeRect.setSize(sf::Vector2f(BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT));
+	fadeRect.setFillColor(sf::Color(0, 0, 0, this->alphaValue));
+	targetWindow->draw(fadeRect);
 }
 
 
 
 void TextureDisplay::OnFinishedExecution(int _id)
 {
+	
 	this->loadedAsset++;
 	std::cout << "asset " << this->loadedAsset << std::endl;
+	
+	if (this->loadedAsset >= this->assetsTotal) {
+		this->isFading = true; 
+		IETThread::sleep(3000);
 
-	if (this->loadedAsset >= this->assetsTotal)
 		spawnAllObjects();
+		
+	}
 }
 
 void TextureDisplay::spawnObject()
@@ -97,7 +116,16 @@ void TextureDisplay::spawnObject()
 
 void TextureDisplay::spawnAllObjects()
 {
+	this->isFading = true;
+	//IETThread::sleep(3000);
+
+	GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
+	GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
+
 	for (int i = 0; i < this->assetsTotal; i++) {
 		this->spawnObject();
+		this->iconList[i]->setIsFading(true);
 	}
+
+
 }
