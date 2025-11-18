@@ -39,7 +39,7 @@ void SpriteRunner::startPool()
 
 void SpriteRunner::OnFinishedExecution()
 {
-	std::clog << "Sprite is done Running\n";
+	std::clog << "Sprite has been released\n";
 }
 
 void SpriteRunner::processInput(sf::Event event) {}

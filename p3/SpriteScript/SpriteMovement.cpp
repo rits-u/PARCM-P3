@@ -8,6 +8,13 @@ SpriteMovement::SpriteMovement(std::string _name, IExecutionEvent* _callback) : 
 	this->OnFinished = _callback;
 }
 
+SpriteMovement::~SpriteMovement()
+{
+	std::cout << "DESTYORR" << std::endl;
+	AGameObject::~AGameObject();
+	
+}
+
 void SpriteMovement::initialize()
 {
 	//assign texture
@@ -34,7 +41,7 @@ void SpriteMovement::update(sf::Time deltaTime)
 
 		counter++;
 		if (counter >= 6) counter = 0;
-		std::cout << "SWITCH! to counter " << counter << std::endl;
+		//std::cout << "SWITCH! to counter " << counter << std::endl;
 	}
 
 	if (bStart)
@@ -52,16 +59,15 @@ void SpriteMovement::update(sf::Time deltaTime)
 		//Move it
 		speedRate += (200.0f * deltaTime.asSeconds());
 		this->setPosition(speedRate, 0.0f);
-		//std::cout << this->getPosition().x << std::endl;
+
+		//if it reaches the "end", destroy GameObject and remove it from Manager
+		if (this->getPosition().x >= (SettingsUtils::WINDOW_WIDTH/2))
+		{
+			bStart = false;
+
+			GameObjectManager::getInstance()->deleteObject(this);
+		}
 	}
 
 }
-
-std::vector<int> SpriteMovement::traverseList(int counter)
-{
-	auto i = tuberList.find(counter)->second;
-	return i;
-
-}
-
 void SpriteMovement::processInput(sf::Event event) {}

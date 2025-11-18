@@ -24,6 +24,7 @@ void ThreadPool::StartScheduling()
 void ThreadPool::StopScheduling()
 {
 	this->isRunning = false;
+	std::cout << "Thread has stopped scheduling" << std::endl;
 }
 
 void ThreadPool::ScheduleTasks(IWorkerAction* task)
