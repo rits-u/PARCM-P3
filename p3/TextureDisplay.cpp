@@ -23,7 +23,7 @@ void TextureDisplay::processInput(sf::Event event)
 
 void TextureDisplay::update(sf::Time deltaTime)
 {
-	int numAsset = 205;
+	int numAsset = 47;
 	this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
 	//std::cout << "ticks: " << this->ticks << std::endl;
 
@@ -52,8 +52,6 @@ void TextureDisplay::update(sf::Time deltaTime)
 		this->ticks = 0;
 		
 	}
-
-	//std::cout << "hello" << std::endl;
 }
 
 void TextureDisplay::OnFinishedExecution(int _id)
@@ -63,22 +61,24 @@ void TextureDisplay::OnFinishedExecution(int _id)
 
 void TextureDisplay::spawnObject()
 {
-
 	//std::cout << "hello" << std::endl;
 	guard.lock();
 	String objectName = "Icon_" + to_string(this->iconList.size());
 	IconObject* iconObj = new IconObject(objectName, this->iconList.size());
 	this->iconList.push_back(iconObj);
 
+	//set scale
+	sf::Vector2f scale(0.125f, 0.125f);
+
+	int spacing = 6;
+
 	//set position
-	int IMG_WIDTH = 68; int IMG_HEIGHT = 68;
+	//int IMG_WIDTH = 68; int IMG_HEIGHT = 68;
+	int IMG_WIDTH = 1032 * scale.x + spacing; int IMG_HEIGHT = 912 * scale.y + spacing; //1032 912
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
 	iconObj->setPosition(x, y);
 	guard.unlock();
-
-	//std::cout << "Set position: " << x << " " << y << std::endl;
-	//std::cout << "Spawned " << objectName << " at " << x << "," << y << std::endl;
 
 	this->columnGrid++;
 	if(this->columnGrid == this->MAX_COLUMN)

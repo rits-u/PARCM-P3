@@ -30,7 +30,8 @@ private:
 	TextureList baseTextureList;
 	TextureList streamTextureList;
 
-	const std::string STREAMING_PATH = "Media/Streaming/";
+	//const std::string STREAMING_PATH = "Media/Streaming/";
+	const std::string STREAMING_PATH = "Media/Icons/";
 	int streamingAssetCount = 0;
 
 	void countStreamingAssets();

@@ -14,7 +14,7 @@ const sf::Time BaseRunner::TIME_PER_FRAME = sf::seconds(1.f / 60.f);
 const float	FRAME_RATE = 60.0f;
 
 BaseRunner::BaseRunner() :
-	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "HO: Entity Component", sf::Style::Close) {
+	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "PARCM P3", sf::Style::Close) {
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
 

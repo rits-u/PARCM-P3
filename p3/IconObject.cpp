@@ -16,6 +16,10 @@ void IconObject::initialize()
 	this->sprite = new sf::Sprite();
 	sf::Texture* texture = TextureManager::getInstance()->getStreamTextureFromList(this->textureIndex);
 	this->sprite->setTexture(*texture);
+	this->sprite->setScale(0.125f, 0.125f);
+
+	//auto tex = TextureManager::getInstance()->getStreamTextureFromList(this->textureIndex);
+	//std::cout << "Texture: " << tex->getSize().x << ", " << tex->getSize().y << std::endl;
 }
 
 void IconObject::processInput(sf::Event event)

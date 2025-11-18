@@ -33,28 +33,33 @@ void TextureManager::loadFromAssetList()
 		std::vector<String> tokens = StringUtils::split(path, '/');
 		String assetName = StringUtils::split(tokens[tokens.size() - 1], '.')[0];
 		this->instantiateAsTexture(path, assetName, false);
-		std::cout << "[TextureManager] Loaded texture: " << assetName << std::endl;
+		//std::cout << "[TextureManager] Loaded texture: " << assetName << std::endl;
 	}
 }
 
 void TextureManager::loadSingleStreamAsset(int index)
 {
-	int fileNum = 0;
-	std::cout << "???" << std::endl;
+	std::vector<std::filesystem::directory_entry> files;
+
+	//get all images
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
-		if (index == fileNum) {
-			//IETThread::sleep(200);
-
-			std::string filepath = entry.path().string();
-			std::string assetName = entry.path().stem().string(); //filename without extension
-
-			this->instantiateAsTexture(filepath, assetName, true);
-
-			//std::cout << "[TextureManager] Loaded streaming texture: " << assetName << std::endl;
-			break;
-		}
-		fileNum++;
+		files.push_back(entry);
 	}
+
+	//sort by numbers
+	std::sort(files.begin(), files.end(), [](const auto& a, const auto& b) {
+		int numA = std::stoi(a.path().stem().string());
+		int numB = std::stoi(b.path().stem().string());
+		return numA < numB;
+	});
+
+	//instantiate as texture
+	if (index < files.size()) {
+		std::string filepath = files[index].path().string();
+		std::string assetName = files[index].path().stem().string(); // filename without extension
+		this->instantiateAsTexture(filepath, assetName, true);
+	}
+
 }
 
 sf::Texture* TextureManager::getFromTextureMap(const String assetName, int frameIndex)
@@ -108,7 +113,7 @@ void TextureManager::countStreamingAssets()
 
 void TextureManager::instantiateAsTexture(String path, String assetName, bool isStreaming)
 {
-	std::cout << "instantiate" << std::endl;
+	//std::cout << "instantiate" << std::endl;
 	sf::Texture* texture = new sf::Texture();
 	texture->loadFromFile(path);
 	this->textureMap[assetName].push_back(texture);
