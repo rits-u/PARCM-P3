@@ -25,7 +25,6 @@ private:
 	void initialize() override;
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
-	//void draw(sf::RenderWindow* targetWindow) override;
 
 	/*For sprite visual movement*/
 	float switchTimer = 0.1f, currTime = 0.0f;

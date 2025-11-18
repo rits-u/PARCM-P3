@@ -13,16 +13,16 @@ SpriteRunner::~SpriteRunner()
 
 void SpriteRunner::initialize()
 {
-	// Assigning tasks to each Component
-
-	//Load the 
-
 	//SPRITES
 	
-	//Assign the pool with the task
-	SpriteMovement* task = new SpriteMovement("SuiseiWalk", this);
-	spritePool.ScheduleTasks(task);
-	GameObjectManager::getInstance()->addObject(task);
+	for (int i = 0; i <= 1; i++)
+	{
+		//Assign the pool with the task
+		SpriteMovement* task = new SpriteMovement(VtuberNames[i], this);
+		spritePool.ScheduleTasks(task);
+		GameObjectManager::getInstance()->addObject(task);
+
+	}
 
 	
 

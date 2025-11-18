@@ -10,7 +10,8 @@ class SpriteRunner : public AGameObject, public IExecutionEvent
 public:
 
 	//Holds sprites for Suisei, Pekora, Ollie, Fauna and Aqua 5 Threads
-	ThreadPool spritePool = ThreadPool(1);
+	ThreadPool spritePool = ThreadPool(2);
+	std::string VtuberNames[2] = { "Suisei","Pekora" };
 
 	SpriteRunner();
 

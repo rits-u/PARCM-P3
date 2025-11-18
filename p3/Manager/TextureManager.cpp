@@ -45,9 +45,11 @@ void TextureManager::loadSprites()
 	//Suisei
 	for (int i = 0; i < 6; i++)
 	{
-		storeTexture("Suisei_" + std::to_string(i) , "Media/Characters/suisei_frames/s_" + std::to_string(i) + ".gif");
+		storeTexture("Suisei" + std::to_string(i) , "Media/Characters/suisei_frames/Suisei" + std::to_string(i) + ".gif");
+		storeTexture("Pekora" + std::to_string(i), "Media/Characters/pekora_frames/Pekora" + std::to_string(i) + ".gif");
 	}
-		
+
+
 }
 
 void TextureManager::storeTexture(std::string name, std::string path)
@@ -68,7 +70,7 @@ sf::Texture* TextureManager::getTexture(std::string key)
 {
 	if (VtuberMap[key] != nullptr)
 	{
-		std::cout << key << " found" << std::endl;
+		//std::cout << key << " found" << std::endl;
 		return VtuberMap[key];
 	}
 
