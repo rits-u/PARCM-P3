@@ -41,7 +41,13 @@ void TextureManager::loadFromAssetList()
 void TextureManager::loadSprites()
 {
 	//Media / Characters / Suisei_sheet.png
-	storeTexture("Suisei", "Media/Characters/Suisei_sheet.png");
+
+	//Suisei
+	for (int i = 0; i < 6; i++)
+	{
+		storeTexture("Suisei_" + std::to_string(i) , "Media/Characters/suisei_frames/s_" + std::to_string(i) + ".gif");
+	}
+		
 }
 
 void TextureManager::storeTexture(std::string name, std::string path)

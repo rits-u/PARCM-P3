@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include  "../ThreadTool/IWorkerAction.h"
 #include "../ThreadTool/IExecutionEvent.h"
 #include <semaphore>
@@ -7,9 +8,6 @@
 #include "../Manager/TextureManager.h"
 #include "../AGameObject.h"
 
-#include "../rapidjson-1.1.0/include/rapidjson/filereadstream.h"
-#include "../rapidjson-1.1.0/include/rapidjson/document.h"
-#include "../rapidjson-1.1.0/include/rapidjson/rapidjson.h"
 
 class SpriteMovement : public AGameObject, public IWorkerAction
 {
@@ -26,11 +24,13 @@ private:
 	//void draw(sf::RenderWindow* targetWindow) override;
 
 	/*For sprite visual movement*/
-	void prepareVtuberSpriteSheet();
+	//void prepareVtuberSpriteSheet();
 	std::unordered_map<int, std::vector<int>> tuberList;
 	std::vector<int> coord;
-	float switchTimer = 1.0f, currTime = 0.0f;
+	float switchTimer = 0.4f, currTime = 0.0f;
 	bool bSwitch = false;
+	bool bFinishLine = false;
+	bool bStart = false;
 	sf::IntRect currSprite;
 	int counter = 0;
 	std::vector<int> traverseList(int counter);

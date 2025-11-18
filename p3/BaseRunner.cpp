@@ -25,8 +25,8 @@ BaseRunner::BaseRunner() :
 	BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
 
-	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
+	//TextureDisplay* display = new TextureDisplay();
+	//GameObjectManager::getInstance()->addObject(display);
 
 	FPSCounter* counter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(counter);
@@ -52,7 +52,7 @@ void BaseRunner::run() {
 		}
 
 		render();
-		SceneManager::getInstance()->checkLoadScene();
+		//SceneManager::getInstance()->checkLoadScene();
 	}
 }
 
