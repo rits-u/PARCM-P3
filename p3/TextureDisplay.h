@@ -21,6 +21,8 @@ public:
 	void draw(sf::RenderWindow* targetWindow);
 	void OnFinishedExecution(int _id) override;
 
+	void OnFinishedExecution() override;
+
 private:
 	int loadedAsset;
 	int assetsTotal;

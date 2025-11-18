@@ -28,9 +28,11 @@ class AGameObject: sf::NonCopyable
 		virtual float getAlphaValue();
 	
 
+		sf::Sprite* sprite = new sf::Sprite;
+
 	protected:
 		String name;
-		sf::Sprite* sprite = new sf::Sprite;
+	
 		sf::Texture* texture = new sf::Texture;
 
 		float posX = 0.0f; float posY = 0.0f;

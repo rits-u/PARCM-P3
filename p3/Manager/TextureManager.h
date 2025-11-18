@@ -1,6 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include "SFML/Graphics.hpp"
+#include <string>
 
 class TextureManager
 {
@@ -19,6 +20,15 @@ public:
 	sf::Texture* getStreamTextureFromList(const int index);
 	int getNumLoadedStreamTextures() const;
 	sf::Texture* getByIndex(int index);
+
+	//SpriteFunctions
+	void loadSprites();
+	sf::Texture* getTexture(std::string);
+	void loadTexture(std::string, std::string);
+	void storeTexture(std::string, std::string);
+	std::unordered_map<std::string, sf::Texture*> VtuberMap;
+
+
 
 private:
 	TextureManager();

@@ -20,6 +20,7 @@ TextureManager* TextureManager::getInstance() {
 TextureManager::TextureManager()
 {
 	this->countStreamingAssets();
+
 }
 
 void TextureManager::loadFromAssetList()
@@ -36,6 +37,60 @@ void TextureManager::loadFromAssetList()
 		//std::cout << "[TextureManager] Loaded texture: " << assetName << std::endl;
 	}
 }
+
+void TextureManager::loadSprites()
+{
+	//Media / Characters / Suisei_sheet.png
+
+	//Suisei
+	for (int i = 0; i < 6; i++)
+	{
+		storeTexture("Suisei" + std::to_string(i) , "Media/Characters/suisei_frames/Suisei" + std::to_string(i) + ".gif");
+		storeTexture("Pekora" + std::to_string(i), "Media/Characters/pekora_frames/Pekora" + std::to_string(i) + ".gif");
+	}
+
+
+}
+
+void TextureManager::storeTexture(std::string name, std::string path)
+{
+	loadTexture(name, path);
+	sf::Texture* assetTex;
+	assetTex = getTexture(name);
+}
+
+void TextureManager::loadTexture(std::string key, std::string path)
+{
+	sf::Texture* texture = new sf::Texture();
+	texture->loadFromFile(path);
+	VtuberMap[key] = texture;
+}
+
+sf::Texture* TextureManager::getTexture(std::string key)
+{
+	if (VtuberMap[key] != nullptr)
+	{
+		//std::cout << key << " found" << std::endl;
+		return VtuberMap[key];
+	}
+
+	else
+	{
+		std::cout << "No texture found for " << key << std::endl;
+		return nullptr;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 
 void TextureManager::loadSingleStreamAsset(int index)
 {
@@ -72,6 +127,8 @@ sf::Texture* TextureManager::getFromTextureMap(const String assetName, int frame
 		return NULL;
 	}
 }
+
+
 
 int TextureManager::getNumFrames(const String assetName)
 {

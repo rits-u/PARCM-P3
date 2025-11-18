@@ -17,6 +17,7 @@ BaseRunner::BaseRunner() :
 	window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "PARCM P3", sf::Style::Close) {
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
+	TextureManager::getInstance()->loadSprites();
 
 	window.setFramerateLimit(FRAME_RATE);
 
@@ -39,9 +40,8 @@ BaseRunner::BaseRunner() :
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
 
-	//asda
-	//SceneManager::getInstance()->registerScene(new LoadingScene());
-	//SceneManager::getInstance()->loadScene(SceneManager::LOADING_SCENE_NAME);
+	SpriteRunner* runner = new SpriteRunner();
+	GameObjectManager::getInstance()->addObject(runner);
 }
 
 void BaseRunner::run() {

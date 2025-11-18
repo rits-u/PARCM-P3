@@ -116,7 +116,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)\SFML-2.6.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -171,6 +171,7 @@
     <ClInclude Include="ThreadTool\ThreadPool.h" />
     <ClInclude Include="ThreadTool\WorkerThread.h" />
     <ClInclude Include="Utils\MathUtils.h" />
+    <ClInclude Include="Utils\SettingsUtils.h" />
     <ClInclude Include="Utils\StringUtils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +196,7 @@
     <ClCompile Include="ThreadTool\ThreadPool.cpp" />
     <ClCompile Include="ThreadTool\WorkerThread.cpp" />
     <ClCompile Include="Utils\MathUtils.cpp" />
+    <ClCompile Include="Utils\SettingsUtils.cpp" />
     <ClCompile Include="Utils\StringUtils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

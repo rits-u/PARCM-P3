@@ -1,5 +1,6 @@
 #pragma once
 #include "AGameObject.h"
+#include "Utils/SettingsUtils.h"
 class FPSCounter :    public AGameObject
 {
 	public:

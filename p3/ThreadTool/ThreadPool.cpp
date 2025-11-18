@@ -24,6 +24,7 @@ void ThreadPool::StartScheduling()
 void ThreadPool::StopScheduling()
 {
 	this->isRunning = false;
+	std::cout << "Thread has stopped scheduling" << std::endl;
 }
 
 void ThreadPool::ScheduleTasks(IWorkerAction* task)
@@ -64,4 +65,6 @@ void ThreadPool::OnFinishedTask(int id)
 		//create a replacement for id
 		InactiveThreads.push(new WorkerThread(id, this));
 	}
+	if (this->ActiveThreads.empty()) StopScheduling();
+
 }
