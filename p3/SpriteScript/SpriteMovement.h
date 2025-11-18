@@ -27,7 +27,8 @@ private:
 	//void prepareVtuberSpriteSheet();
 	std::unordered_map<int, std::vector<int>> tuberList;
 	std::vector<int> coord;
-	float switchTimer = 0.4f, currTime = 0.0f;
+	float switchTimer = 0.1f, currTime = 0.0f;
+	float speedRate = 0.0f;
 	bool bSwitch = false;
 	bool bFinishLine = false;
 	bool bStart = false;

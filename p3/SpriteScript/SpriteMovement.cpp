@@ -27,8 +27,6 @@ void SpriteMovement::OnStartTask()
 void SpriteMovement::update(sf::Time deltaTime) 
 {
 	currTime += deltaTime.asSeconds();
-
-	//std::cout << currTime << std::endl;
 	if (currTime >= switchTimer)
 	{
 		this->bSwitch = true;
@@ -42,7 +40,8 @@ void SpriteMovement::update(sf::Time deltaTime)
 	if (bStart)
 	{
 		if (this->bSwitch)
-		{		/*Sprite Rendering*/
+		{		
+			/*Sprite Rendering*/
 			this->sprite = new sf::Sprite();
 			this->sprite->setTexture(*TextureManager::getInstance()->getTexture("Suisei_" + std::to_string(counter)));
 			sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
@@ -51,7 +50,9 @@ void SpriteMovement::update(sf::Time deltaTime)
 
 		}
 		//Move it
-		this->setPosition(100.0f * deltaTime.asSeconds(), 0.0f);
+		speedRate += (200.0f * deltaTime.asSeconds());
+		this->setPosition(speedRate, 0.0f);
+		//std::cout << this->getPosition().x << std::endl;
 	}
 
 }
