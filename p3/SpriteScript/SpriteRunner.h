@@ -5,13 +5,16 @@
 #include "SpriteMovement.h"
 #include "../AGameObject.h"
 #include "../Manager/GameObjectManager.h"
+
 class SpriteRunner : public AGameObject, public IExecutionEvent
 {
 public:
 
 	//Holds sprites for Suisei, Pekora, Ollie, Fauna and Aqua 5 Threads
-	ThreadPool spritePool = ThreadPool(2);
+	ThreadPool spritePool = ThreadPool(1);
 	std::string VtuberNames[2] = { "Suisei","Pekora" };
+
+	SpriteMovement* currSprite;
 
 	SpriteRunner();
 
@@ -27,7 +30,11 @@ public:
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
 
-
-
+	/*For sprite visual movement*/
+	float switchTimer = 0.1f, currTime = 0.0f;
+	float speedRate = 0.0f;
+	bool bSwitch = false;
+	bool bStart = false;
+	int frameCounter = 0, threadCounter = 0;
 };
 

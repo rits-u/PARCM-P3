@@ -25,12 +25,5 @@ private:
 	void initialize() override;
 	void processInput(sf::Event event) override;
 	void update(sf::Time deltaTime) override;
-
-	/*For sprite visual movement*/
-	float switchTimer = 0.1f, currTime = 0.0f;
-	float speedRate = 0.0f;
-	bool bSwitch = false;
-	bool bStart = false;
-	int counter = 0;
 };
 
