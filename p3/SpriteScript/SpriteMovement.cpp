@@ -33,7 +33,6 @@ void SpriteMovement::OnStartTask()
 	this->OnFinished->OnFinishedExecution();
 	spriteRoom.release();
 
-
 }
 
 void SpriteMovement::update(sf::Time deltaTime)  {}

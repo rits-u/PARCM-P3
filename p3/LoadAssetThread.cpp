@@ -1,6 +1,6 @@
 #include "LoadAssetThread.h"
 
-std::counting_semaphore<4> assetSemaphore(2);
+//std::counting_semaphore<4> assetSemaphore(2);
 
 LoadAssetThread::LoadAssetThread(int id, IExecutionEvent* callback)
 {
@@ -26,14 +26,18 @@ void LoadAssetThread::SetNumAsset(int num)
 void LoadAssetThread::OnStartTask()
 {
 	if (!isBatch) {
+		std::cout << "aihsdasd" << std::endl;
 		TextureManager::getInstance()->loadSingleStreamAsset(this->id);
-		this->OnFinished->OnFinishedExecution(0);
+		this->OnFinished->OnFinishedExecution();
+
 	}
 	else {
 		for (int i = 0; i < batchSize; i++) {
 			if (this->id + i >= this->numAssets) break;
 			TextureManager::getInstance()->loadSingleStreamAsset(this->id + i);
-			this->OnFinished->OnFinishedExecution(0);
+			this->OnFinished->OnFinishedExecution();
+
 		}
 	}
+
 }

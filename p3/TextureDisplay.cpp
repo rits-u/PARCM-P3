@@ -32,7 +32,7 @@ void TextureDisplay::update(sf::Time deltaTime)
 	if (this->ticks >= STREAMING_LOAD_DELAY) {
 
 		int texCount = TextureManager::getInstance()->getNumLoadedStreamTextures();
-	//	std::cout << "texCount: " << texCount << std::endl;
+		std::cout << "texCount: " << texCount << std::endl;
 		if (texCount < this->assetsTotal) {
 			LoadAssetThread* asset = new LoadAssetThread(texCount, this);
 			asset->SetNumAsset(this->assetsTotal);
@@ -48,10 +48,11 @@ void TextureDisplay::update(sf::Time deltaTime)
 			}
 
 			this->threadPool.ScheduleTasks(asset);
+
 		}
 
 		this->ticks = 0;
-		
+	
 	}
 
 	if (this->isFading)
@@ -69,7 +70,7 @@ void TextureDisplay::draw(sf::RenderWindow* targetWindow)
 
 
 
-void TextureDisplay::OnFinishedExecution(int _id)
+void TextureDisplay::OnFinishedExecution()
 {
 	
 	this->loadedAsset++;

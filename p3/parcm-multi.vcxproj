@@ -161,6 +161,8 @@
     <ClInclude Include="Manager\TextureManager.h" />
     <ClInclude Include="Scenes\AScene.h" />
     <ClInclude Include="Scenes\LoadingScene.h" />
+    <ClInclude Include="SpriteScript\SpriteController.h" />
+    <ClInclude Include="SpriteScript\SpriteActor.h" />
     <ClInclude Include="SpriteScript\VtuberSprite.h" />
     <ClInclude Include="SpriteScript\SpriteMovement.h" />
     <ClInclude Include="SpriteScript\SpriteRunner.h" />
@@ -188,6 +190,8 @@
     <ClCompile Include="Manager\TextureManager.cpp" />
     <ClCompile Include="Scenes\AScene.cpp" />
     <ClCompile Include="Scenes\LoadingScene.cpp" />
+    <ClCompile Include="SpriteScript\SpriteController.cpp" />
+    <ClCompile Include="SpriteScript\SpriteActor.cpp" />
     <ClCompile Include="SpriteScript\VtuberSprite.cpp" />
     <ClCompile Include="SpriteScript\SpriteMovement.cpp" />
     <ClCompile Include="SpriteScript\SpriteRunner.cpp" />

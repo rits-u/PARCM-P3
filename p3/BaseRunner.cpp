@@ -30,18 +30,18 @@ BaseRunner::BaseRunner() :
 	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG");
 	GameObjectManager::getInstance()->addObject(loadingScreenBG);
 
-	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG");
-	GameObjectManager::getInstance()->addObject(gameSceneBG);
-	gameSceneBG->setActiveSelf(false);
+	//BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG");
+	//GameObjectManager::getInstance()->addObject(gameSceneBG);
+	//gameSceneBG->setActiveSelf(false);
 
-	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
+	//TextureDisplay* display = new TextureDisplay();
+	//GameObjectManager::getInstance()->addObject(display);
 
-	FPSCounter* fpsCounter = new FPSCounter();
-	GameObjectManager::getInstance()->addObject(fpsCounter);
+	//FPSCounter* fpsCounter = new FPSCounter();
+	//GameObjectManager::getInstance()->addObject(fpsCounter);
 
-	SpriteRunner* runner = new SpriteRunner();
-	GameObjectManager::getInstance()->addObject(runner);
+	//SpriteRunner* runner = new SpriteRunner();
+	//GameObjectManager::getInstance()->addObject(runner);
 }
 
 void BaseRunner::run() {

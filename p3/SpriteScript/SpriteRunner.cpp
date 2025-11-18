@@ -43,7 +43,7 @@ void SpriteRunner::processInput(sf::Event event) {}
 void SpriteRunner::update(sf::Time deltaTime) 
 {
 
-	std::cout << "THREAD COUNTER IS " << threadCounter << std::endl;
+	//std::cout << "THREAD COUNTER IS " << threadCounter << std::endl;
 	currTime += deltaTime.asSeconds();
 	if (currTime >= switchTimer)
 	{

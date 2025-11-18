@@ -19,8 +19,6 @@ public:
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
 	void draw(sf::RenderWindow* targetWindow);
-	void OnFinishedExecution(int _id) override;
-
 	void OnFinishedExecution() override;
 
 private:
