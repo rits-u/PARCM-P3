@@ -65,6 +65,6 @@ void ThreadPool::OnFinishedTask(int id)
 		//create a replacement for id
 		InactiveThreads.push(new WorkerThread(id, this));
 	}
-	if (this->ActiveThreads.empty()) StopScheduling();
+	//if (this->ActiveThreads.empty()) StopScheduling();
 
 }

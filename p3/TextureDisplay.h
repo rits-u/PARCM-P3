@@ -43,6 +43,7 @@ private:
 
 	void spawnObject();
 	void spawnAllObjects();
+	void ApplyFadeToAll();
 
 	std::mutex guard;
 };

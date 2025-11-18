@@ -13,7 +13,7 @@ public:
 
 	void setSpeed(float speed);
 	void setSwitchTimer(float timer);
-	void setScaleFactor(float scale);
+	//void setScaleFactor(float scale);
 
 private:
 	void updateSpriteTexture();
@@ -27,7 +27,7 @@ private:
     float frameTime = 0.0f;
 
     float speed = 100.0f; // pixels per second
-    float scale = 1.0f;
+  //  float scale = 1.0f;
 
 
 };

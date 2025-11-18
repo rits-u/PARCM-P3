@@ -32,7 +32,7 @@ void TextureDisplay::update(sf::Time deltaTime)
 	if (this->ticks >= STREAMING_LOAD_DELAY) {
 
 		int texCount = TextureManager::getInstance()->getNumLoadedStreamTextures();
-		std::cout << "texCount: " << texCount << std::endl;
+		//std::cout << "texCount: " << texCount << std::endl;
 		if (texCount < this->assetsTotal) {
 			LoadAssetThread* asset = new LoadAssetThread(texCount, this);
 			asset->SetNumAsset(this->assetsTotal);
@@ -81,7 +81,7 @@ void TextureDisplay::OnFinishedExecution()
 		IETThread::sleep(3000);
 
 		spawnAllObjects();
-		
+		ApplyFadeToAll();
 	}
 }
 
@@ -117,16 +117,28 @@ void TextureDisplay::spawnObject()
 
 void TextureDisplay::spawnAllObjects()
 {
-	this->isFading = true;
+
 	//IETThread::sleep(3000);
 
-	GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
-	GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
+	//GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
+	//GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
 
 	for (int i = 0; i < this->assetsTotal; i++) {
 		this->spawnObject();
-		this->iconList[i]->setIsFading(true);
+	//	this->iconList[i]->setIsFading(true);
 	}
 
 
+}
+
+void TextureDisplay::ApplyFadeToAll()
+{
+	this->isFading = true;
+	GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
+	GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
+	GameObjectManager::getInstance()->findObjectByName("SpriteController")->setActiveSelf(true);
+	
+	for (int i = 0; i < this->assetsTotal; i++) {
+		this->iconList[i]->setIsFading(true);
+	}
 }

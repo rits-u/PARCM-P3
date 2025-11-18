@@ -25,8 +25,10 @@ void LoadAssetThread::SetNumAsset(int num)
 
 void LoadAssetThread::OnStartTask()
 {
+//	std::cout << "aihsdasd" << std::endl;
+
 	if (!isBatch) {
-		std::cout << "aihsdasd" << std::endl;
+		
 		TextureManager::getInstance()->loadSingleStreamAsset(this->id);
 		this->OnFinished->OnFinishedExecution();
 

@@ -6,6 +6,7 @@
 #include "TextureDisplay.h"
 #include "FPSCounter.h"
 #include "Scenes/LoadingScene.h"
+#include "SpriteScript/SpriteController.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -30,12 +31,15 @@ BaseRunner::BaseRunner() :
 	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG");
 	GameObjectManager::getInstance()->addObject(loadingScreenBG);
 
-	//BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG");
-	//GameObjectManager::getInstance()->addObject(gameSceneBG);
-	//gameSceneBG->setActiveSelf(false);
+	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG");
+	GameObjectManager::getInstance()->addObject(gameSceneBG);
+	gameSceneBG->setActiveSelf(false);
 
-	//TextureDisplay* display = new TextureDisplay();
-	//GameObjectManager::getInstance()->addObject(display);
+	TextureDisplay* display = new TextureDisplay();
+	GameObjectManager::getInstance()->addObject(display);
+
+	SpriteController* spriteController = new SpriteController("SpriteController");
+	GameObjectManager::getInstance()->addObject(spriteController);
 
 	//FPSCounter* fpsCounter = new FPSCounter();
 	//GameObjectManager::getInstance()->addObject(fpsCounter);

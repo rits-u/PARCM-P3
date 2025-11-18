@@ -12,7 +12,7 @@ void SpriteActor::initialize()
 {
 	this->sprite = new sf::Sprite();
 	updateSpriteTexture();
-	applyScale();
+//	applyScale();
 
 	if (this->getPosition().x == 0 && this->getPosition().y == 0) {
 		this->setPosition(0.f, (float)BaseRunner::WINDOW_HEIGHT * 0.25f);
@@ -50,10 +50,10 @@ void SpriteActor::setSwitchTimer(float timer)
     this->switchTimer = timer;
 }
 
-void SpriteActor::setScaleFactor(float scale)
-{
-    this->scale = scale;
-}
+//void SpriteActor::setSca(float scale)
+//{
+//    this->scale = scale;
+//}
 
 void SpriteActor::updateSpriteTexture()
 {
@@ -67,9 +67,9 @@ void SpriteActor::updateSpriteTexture()
     }
 }
 
-void SpriteActor::applyScale()
-{
-    if (this->sprite)
-        this->sprite->setScale(scale, scale);
-}
+//void SpriteActor::applyScale()
+//{
+//    if (this->sprite)
+//        this->sprite->setScale(scale, scale);
+//}
 
