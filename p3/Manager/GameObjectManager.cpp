@@ -46,6 +46,8 @@ void GameObjectManager::update(sf::Time deltaTime)
 	for (int i = 0; i < this->gameObjectList.size(); i++) {
 		this->gameObjectList[i]->update(deltaTime);
 	}
+
+	//std::cout << "size: " << this->gameObjectList.size() << std::endl;
 }
 
 //draws the object if it contains a sprite

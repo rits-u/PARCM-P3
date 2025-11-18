@@ -25,15 +25,15 @@ void LoadAssetThread::SetNumAsset(int num)
 
 void LoadAssetThread::OnStartTask()
 {
-	/*if (!isBatch) {
+	if (!isBatch) {
 		TextureManager::getInstance()->loadSingleStreamAsset(this->id);
-		this->OnFinished->OnFinishedExecution();
+		this->OnFinished->OnFinishedExecution(0);
 	}
 	else {
 		for (int i = 0; i < batchSize; i++) {
 			if (this->id + i >= this->numAssets) break;
 			TextureManager::getInstance()->loadSingleStreamAsset(this->id + i);
-			this->OnFinished->OnFinishedExecution();
+			this->OnFinished->OnFinishedExecution(0);
 		}
-	}*/
+	}
 }

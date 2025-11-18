@@ -25,11 +25,13 @@ void TextureDisplay::update(sf::Time deltaTime)
 {
 	int numAsset = 205;
 	this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
+	//std::cout << "ticks: " << this->ticks << std::endl;
+
 
 	if (this->ticks >= STREAMING_LOAD_DELAY) {
 
 		int texCount = TextureManager::getInstance()->getNumLoadedStreamTextures();
-
+	//	std::cout << "texCount: " << texCount << std::endl;
 		if (texCount < numAsset) {
 			LoadAssetThread* asset = new LoadAssetThread(texCount, this);
 			asset->SetNumAsset(numAsset);
@@ -50,6 +52,8 @@ void TextureDisplay::update(sf::Time deltaTime)
 		this->ticks = 0;
 		
 	}
+
+	//std::cout << "hello" << std::endl;
 }
 
 void TextureDisplay::OnFinishedExecution(int _id)
@@ -59,6 +63,8 @@ void TextureDisplay::OnFinishedExecution(int _id)
 
 void TextureDisplay::spawnObject()
 {
+
+	//std::cout << "hello" << std::endl;
 	guard.lock();
 	String objectName = "Icon_" + to_string(this->iconList.size());
 	IconObject* iconObj = new IconObject(objectName, this->iconList.size());

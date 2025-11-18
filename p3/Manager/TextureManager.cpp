@@ -40,7 +40,7 @@ void TextureManager::loadFromAssetList()
 void TextureManager::loadSingleStreamAsset(int index)
 {
 	int fileNum = 0;
-
+	std::cout << "???" << std::endl;
 	for (const auto& entry : std::filesystem::directory_iterator(STREAMING_PATH)) {
 		if (index == fileNum) {
 			//IETThread::sleep(200);
@@ -108,6 +108,7 @@ void TextureManager::countStreamingAssets()
 
 void TextureManager::instantiateAsTexture(String path, String assetName, bool isStreaming)
 {
+	std::cout << "instantiate" << std::endl;
 	sf::Texture* texture = new sf::Texture();
 	texture->loadFromFile(path);
 	this->textureMap[assetName].push_back(texture);
