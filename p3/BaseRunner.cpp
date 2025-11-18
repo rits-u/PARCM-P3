@@ -30,7 +30,7 @@ BaseRunner::BaseRunner() :
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
 
-
+	//asda
 	//SceneManager::getInstance()->registerScene(new LoadingScene());
 	//SceneManager::getInstance()->loadScene(SceneManager::LOADING_SCENE_NAME);
 }
