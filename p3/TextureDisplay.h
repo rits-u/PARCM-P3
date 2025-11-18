@@ -22,6 +22,8 @@ public:
 	void OnFinishedExecution(int _id) override;
 
 private:
+	int loadedAsset;
+	int assetsTotal;
 	typedef std::vector<IconObject*> IconList;
 	IconList iconList;
 
@@ -40,6 +42,7 @@ private:
 	const int MAX_ROW = 22;
 
 	void spawnObject();
+	void spawnAllObjects();
 
 	std::mutex guard;
 };

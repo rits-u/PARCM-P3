@@ -8,7 +8,8 @@
 
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
-	
+	this->loadedAsset = 0;
+	this->assetsTotal = 47;
 }
 
 void TextureDisplay::initialize()
@@ -23,18 +24,17 @@ void TextureDisplay::processInput(sf::Event event)
 
 void TextureDisplay::update(sf::Time deltaTime)
 {
-	int numAsset = 47;
+	//int assetsTotal = 47;
 	this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
 	//std::cout << "ticks: " << this->ticks << std::endl;
-
 
 	if (this->ticks >= STREAMING_LOAD_DELAY) {
 
 		int texCount = TextureManager::getInstance()->getNumLoadedStreamTextures();
 	//	std::cout << "texCount: " << texCount << std::endl;
-		if (texCount < numAsset) {
+		if (texCount < this->assetsTotal) {
 			LoadAssetThread* asset = new LoadAssetThread(texCount, this);
-			asset->SetNumAsset(numAsset);
+			asset->SetNumAsset(this->assetsTotal);
 
 			switch (this->streamingType) {
 				case SINGLE_STREAM:
@@ -54,9 +54,15 @@ void TextureDisplay::update(sf::Time deltaTime)
 	}
 }
 
+
+
 void TextureDisplay::OnFinishedExecution(int _id)
 {
-	this->spawnObject();
+	this->loadedAsset++;
+	std::cout << "asset " << this->loadedAsset << std::endl;
+
+	if (this->loadedAsset >= this->assetsTotal)
+		spawnAllObjects();
 }
 
 void TextureDisplay::spawnObject()
@@ -87,4 +93,11 @@ void TextureDisplay::spawnObject()
 		this->rowGrid++;
 	}
 	GameObjectManager::getInstance()->addObject(iconObj);
+}
+
+void TextureDisplay::spawnAllObjects()
+{
+	for (int i = 0; i < this->assetsTotal; i++) {
+		this->spawnObject();
+	}
 }
