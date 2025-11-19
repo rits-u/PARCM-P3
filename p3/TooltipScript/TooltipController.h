@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 class TooltipController : public AGameObject
 {
@@ -22,6 +23,11 @@ private:
 	int currentIndex = 0;
 
 	Tooltip* currentTip = nullptr;
+
+	bool bClick = false;
+	bool bReleased = true;
+
+	int tipCounter = 0;
 
 	float spawnX = 0.f, spawnY = 0.f;
 	float switchX = 0.f;

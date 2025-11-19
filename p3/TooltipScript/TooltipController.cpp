@@ -17,14 +17,27 @@ void TooltipController::initialize()
 
 void TooltipController::processInput(sf::Event event)
 {
+    //MOUSE INPUT
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && bReleased)
+    {
+        bClick = true;
+        bReleased = false;
+    } else if (event.type == event.MouseButtonReleased)
+    {
+        bReleased = true;
+    }
 }
 
 void TooltipController::update(sf::Time deltaTime)
 {
-    if (currentTip->bSwitch) 
+    if (bClick) 
         {
+            if (tipCounter >= 3)tipCounter = 0;
+            else tipCounter++;
+            bClick = false;
             spawnNextActor();
-            currentTip->bSwitch = false;
+           
+            
         }
  
 }
@@ -33,10 +46,7 @@ void TooltipController::spawnNextActor()
 {
     removeCurrentActor();
 
-    //std::string name = characterNames[currentIndex];
-    Tooltip* actor = new Tooltip(name);
-    //actor->setPosition(spawnX, spawnY);
-    //actor->setSpeed(defaultSpeed);
+    Tooltip* actor = new Tooltip(name,tipCounter);
     actor->setScale(defaultScale, defaultScale);
     actor->setSwitchTimer(3.0f);
 
@@ -45,6 +55,8 @@ void TooltipController::spawnNextActor()
     GameObjectManager::getInstance()->addObject(actor);
 
     currentTip = actor;
+
+    
 }
 
 void TooltipController::removeCurrentActor()

@@ -5,19 +5,20 @@
 class Tooltip : public AGameObject
 {
 public:
-	Tooltip(const std::string& baseName);
+	Tooltip(const std::string& baseName, const int& tipCounter);
 
 	void initialize();
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
 
 	void setSwitchTimer(float timer);
-
-	bool bSwitch = false;
+	void updateSpriteTexture();
 
 private:
-	void updateSpriteTexture();
+	
 	void applyScale();
+
+	int counterTip;
 
 	std::string baseName;
 	int maxFrames = 4;

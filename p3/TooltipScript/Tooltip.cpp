@@ -2,9 +2,10 @@
 #include "../BaseRunner.h"
 #include <iostream>
 
-Tooltip::Tooltip(const std::string& baseName) : AGameObject(baseName)
+Tooltip::Tooltip(const std::string& baseName, const int& tipCounter) : AGameObject(baseName)
 {
     this->baseName = baseName;
+    this->counterTip = tipCounter;
 }
 
 void Tooltip::initialize()
@@ -13,30 +14,13 @@ void Tooltip::initialize()
     updateSpriteTexture();
     applyScale();
 
-    this->setPosition(BaseRunner::WINDOW_WIDTH/2.0f, 0);
-
-    //if (this->getPosition().x == 0 && this->getPosition().y == 0) {
-      //  this->setPosition(BaseRunner::WINDOW_WIDTH/2.0f, (float)BaseRunner::WINDOW_HEIGHT * 0.25f);
-   // }
+    //270.0f
+    this->setPosition(BaseRunner::WINDOW_WIDTH/5.0f,80.0f);
 }
 
-void Tooltip::processInput(sf::Event event)
-{
-}
+void Tooltip::processInput(sf::Event event) {}
 
-void Tooltip::update(sf::Time deltaTime)
-{
-    //frame switch update
-    frameTime += deltaTime.asSeconds();
-    if (frameTime >= switchTimer) {
-        frameTime = 0.0f;
-        frameIndex++;
-        if (frameIndex >= maxFrames) frameIndex = 0;
-        updateSpriteTexture();
-        bSwitch = true;
-
-    }
-}
+void Tooltip::update(sf::Time deltaTime) {}
 
 void Tooltip::setSwitchTimer(float timer)
 {
@@ -45,8 +29,7 @@ void Tooltip::setSwitchTimer(float timer)
 
 void Tooltip::updateSpriteTexture()
 {
-
-    std::string texName = "Tooltip" + std::to_string(frameIndex);
+    std::string texName = "Tooltip" + std::to_string(counterTip);
     sf::Texture* tex = TextureManager::getInstance()->getTooltip(texName);
     if (tex != nullptr) {
         this->sprite->setTexture(*tex);
