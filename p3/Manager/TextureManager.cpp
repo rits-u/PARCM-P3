@@ -42,11 +42,14 @@ void TextureManager::loadSprites()
 {
 	//Media / Characters / Suisei_sheet.png
 
-	//Suisei
+	//Sprite Loading
 	for (int i = 0; i < 6; i++)
 	{
 		storeTexture("Suisei" + std::to_string(i) , "Media/Characters/suisei_frames/Suisei" + std::to_string(i) + ".gif");
 		storeTexture("Pekora" + std::to_string(i), "Media/Characters/pekora_frames/Pekora" + std::to_string(i) + ".gif");
+		storeTexture("Ollie" + std::to_string(i), "Media/Characters/ollie_frames/Ollie" + std::to_string(i) + ".gif");
+		storeTexture("Fauna" + std::to_string(i), "Media/Characters/fauna_frames/Fauna" + std::to_string(i) + ".gif");
+		storeTexture("Aqua" + std::to_string(i), "Media/Characters/auqa_frames/Aqua" + std::to_string(i) + ".gif");
 	}
 
 
