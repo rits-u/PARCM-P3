@@ -4,13 +4,14 @@
 #include "BaseRunner.h"
 #include "Manager/GameObjectManager.h"
 #include "IconObject.h"
+#include "BGObject.h"
+#include "SpriteScript/SpriteController.h"
 
 
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
 	this->loadedAsset = 0;
 	this->assetsTotal = 5;
-	//this->mode = FADE_OUT;
 }
 
 void TextureDisplay::initialize()
@@ -25,7 +26,6 @@ void TextureDisplay::processInput(sf::Event event)
 
 void TextureDisplay::update(sf::Time deltaTime)
 {
-	//int assetsTotal = 47;
 	this->ticks += BaseRunner::TIME_PER_FRAME.asMilliseconds();
 	//std::cout << "ticks: " << this->ticks << std::endl;
 
@@ -38,13 +38,13 @@ void TextureDisplay::update(sf::Time deltaTime)
 			asset->SetNumAsset(this->assetsTotal);
 
 			switch (this->streamingType) {
-				case SINGLE_STREAM:
-					asset->SetMode(false);
-					break;
-				case BATCH_LOAD:
-					asset->SetMode(true);
-					asset->SetBatchSize(5);
-					break;
+			case SINGLE_STREAM:
+				asset->SetMode(false);
+				break;
+			case BATCH_LOAD:
+				asset->SetMode(true);
+				asset->SetBatchSize(5);
+				break;
 			}
 
 			this->threadPool.ScheduleTasks(asset);
@@ -52,23 +52,10 @@ void TextureDisplay::update(sf::Time deltaTime)
 		}
 
 		this->ticks = 0;
-	
+
 	}
 
-	//if (this->isFading)
-	//	fadeTransition(deltaTime);
-
 }
-
-void TextureDisplay::draw(sf::RenderWindow* targetWindow)
-{
-	//sf::RectangleShape fadeRect;
-	//fadeRect.setSize(sf::Vector2f(BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT));
-	//fadeRect.setFillColor(sf::Color(0, 0, 0, this->alphaValue));
-	//targetWindow->draw(fadeRect);
-}
-
-
 
 void TextureDisplay::OnFinishedExecution()
 {
@@ -77,11 +64,10 @@ void TextureDisplay::OnFinishedExecution()
 	std::cout << "asset " << this->loadedAsset << std::endl;
 	
 	if (this->loadedAsset >= this->assetsTotal) {
-	//	this->isFading = true; 
-		IETThread::sleep(3000);
-
 		spawnAllObjects();
-		ApplyFadeToAll();
+		FadeOutAll();
+		IETThread::sleep(3000);
+		FadeInAll();
 	}
 }
 
@@ -104,6 +90,7 @@ void TextureDisplay::spawnObject()
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
 	iconObj->setPosition(x, y);
+	iconObj->setActiveSelf(false);
 	guard.unlock();
 
 	this->columnGrid++;
@@ -117,28 +104,48 @@ void TextureDisplay::spawnObject()
 
 void TextureDisplay::spawnAllObjects()
 {
-
-	//IETThread::sleep(3000);
-
-	//GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
-	//GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
-
 	for (int i = 0; i < this->assetsTotal; i++) {
 		this->spawnObject();
-	//	this->iconList[i]->setIsFading(true);
 	}
-
-
 }
 
-void TextureDisplay::ApplyFadeToAll()
+void TextureDisplay::FadeOutAll()
 {
-	//this->isFading = true;
-	GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
-	GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
-	GameObjectManager::getInstance()->findObjectByName("SpriteController")->setActiveSelf(true);
-	
+	BGObject* bg = (BGObject*)GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG");
+	bg->setIsFading(true);
+
+	SpriteController* controller = (SpriteController*)GameObjectManager::getInstance()->findObjectByName("SpriteController");
+	controller->getActor()->setIsFading(true);
+	GameObjectManager::getInstance()->deleteObjectByName("SpriteController");
+}
+
+void TextureDisplay::FadeInAll()
+{
+	BGObject* game = (BGObject*)GameObjectManager::getInstance()->findObjectByName("GameSceneBG");
+	game->setActiveSelf(true); game->setIsFading(true);
+
+	IETThread::sleep(1200);
+
 	for (int i = 0; i < this->assetsTotal; i++) {
+		this->iconList[i]->setActiveSelf(true);
 		this->iconList[i]->setIsFading(true);
 	}
+
 }
+
+//void TextureDisplay::ApplyFadeToAll()
+//{
+//	//this->isFading = true;
+//	/*GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
+//	GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
+//	GameObjectManager::getInstance()->findObjectByName("SpriteController")->setActiveSelf(true);*/
+//
+//	//BGObject* bg = (BGObject*)GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG");
+//	//bg->setIsFading(true);
+//	BGObject* game = (BGObject*)GameObjectManager::getInstance()->findObjectByName("GameSceneBG");
+//	game->setActiveSelf(true); game->setIsFading(true);
+//	
+//	for (int i = 0; i < this->assetsTotal; i++) {
+//		this->iconList[i]->setIsFading(true);
+//	}
+//}

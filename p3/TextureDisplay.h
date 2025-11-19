@@ -18,7 +18,6 @@ public:
 	void initialize();
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
-	void draw(sf::RenderWindow* targetWindow);
 	void OnFinishedExecution() override;
 
 private:
@@ -43,7 +42,9 @@ private:
 
 	void spawnObject();
 	void spawnAllObjects();
-	void ApplyFadeToAll();
+//	void ApplyFadeToAll();
+	void FadeInAll();
+	void FadeOutAll();
 
 	std::mutex guard;
 };

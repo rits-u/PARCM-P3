@@ -1,4 +1,5 @@
 #include "FadeTransition.h"
+#include <iostream>
 
 FadeTransition::FadeTransition()
 {
@@ -21,6 +22,7 @@ void FadeTransition::applyFadeTransition(sf::Time deltaTime)
 		}
 		break;
 	case FADE_IN:
+		std::cout << "ahsdashdaa fade: " << this->alphaValue << std::endl;
 		this->alphaValue += 150.f * deltaTime.asSeconds(); //speed of fade
 		if (this->alphaValue > 255) {
 			this->alphaValue = 255;
@@ -31,12 +33,9 @@ void FadeTransition::applyFadeTransition(sf::Time deltaTime)
 	}
 }
 
-void FadeTransition::changeFadeMode()
+void FadeTransition::changeFadeMode(FadeMode mode)
 {
-	if (this->mode = FADE_IN)
-		this->mode = FADE_OUT;
-	else
-		this->mode = FADE_IN;
+	this->mode = mode;
 }
 
 void FadeTransition::setIsFading(bool isFading)

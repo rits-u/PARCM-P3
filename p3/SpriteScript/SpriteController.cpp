@@ -6,9 +6,9 @@ SpriteController::SpriteController(std::string name) : AGameObject(name)
     this->characterNames = { "Suisei", "Pekora" };
     this->currentIndex = 0;
 
-    spawnX = 0.f;
-    spawnY = BaseRunner::WINDOW_HEIGHT * 0.25f;
-    switchX = (float)BaseRunner::WINDOW_WIDTH / 2.f;
+    this->spawnX = 0.f;
+    this->spawnY = BaseRunner::WINDOW_HEIGHT * 0.25f;
+    this->switchX = (float)BaseRunner::WINDOW_WIDTH / 2.f;
 }
 
 void SpriteController::initialize()
@@ -37,6 +37,11 @@ void SpriteController::update(sf::Time deltaTime)
         //no current actor
         spawnNextActor();
     }
+}
+
+SpriteActor* SpriteController::getActor()
+{
+    return this->currentActor;
 }
 
 void SpriteController::spawnNextActor()

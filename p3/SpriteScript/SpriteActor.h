@@ -1,8 +1,9 @@
 #pragma once
 #include "../AGameObject.h"
 #include "../Manager/TextureManager.h"
+#include "../Utils/FadeTransition.h"
 
-class SpriteActor : public AGameObject
+class SpriteActor : public AGameObject, public FadeTransition
 {
 public:
 	SpriteActor(const std::string& baseName, int frameCount);
@@ -13,11 +14,9 @@ public:
 
 	void setSpeed(float speed);
 	void setSwitchTimer(float timer);
-	//void setScaleFactor(float scale);
 
 private:
 	void updateSpriteTexture();
-	void applyScale();
 
     std::string baseName;
     int maxFrames = 1;
@@ -26,9 +25,6 @@ private:
     float switchTimer = 0.1f;
     float frameTime = 0.0f;
 
-    float speed = 100.0f; // pixels per second
-  //  float scale = 1.0f;
-
-
+    float speed = 100.0f; //pixels per second
 };
 

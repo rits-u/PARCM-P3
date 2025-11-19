@@ -7,6 +7,7 @@
 #include "FPSCounter.h"
 #include "Scenes/LoadingScene.h"
 #include "SpriteScript/SpriteController.h"
+#include "Utils/FadeTransition.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -23,15 +24,10 @@ BaseRunner::BaseRunner() :
 	window.setFramerateLimit(FRAME_RATE);
 
 	//load objects
-	//BGObject* bgObject = new BGObject("BGObject");
-	//GameObjectManager::getInstance()->addObject(bgObject);
-
-
-
-	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG");
+	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG", FadeTransition::FADE_OUT);
 	GameObjectManager::getInstance()->addObject(loadingScreenBG);
 
-	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG");
+	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG", FadeTransition::FADE_IN);
 	GameObjectManager::getInstance()->addObject(gameSceneBG);
 	gameSceneBG->setActiveSelf(false);
 
@@ -41,8 +37,8 @@ BaseRunner::BaseRunner() :
 	SpriteController* spriteController = new SpriteController("SpriteController");
 	GameObjectManager::getInstance()->addObject(spriteController);
 
-	//FPSCounter* fpsCounter = new FPSCounter();
-	//GameObjectManager::getInstance()->addObject(fpsCounter);
+	FPSCounter* fpsCounter = new FPSCounter();
+	GameObjectManager::getInstance()->addObject(fpsCounter);
 
 	//SpriteRunner* runner = new SpriteRunner();
 	//GameObjectManager::getInstance()->addObject(runner);

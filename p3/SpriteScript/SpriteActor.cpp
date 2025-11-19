@@ -6,14 +6,14 @@ SpriteActor::SpriteActor(const std::string& baseName, int frameCount) : AGameObj
 {
 	this->baseName = baseName;
 	this->maxFrames = frameCount;
+    this->alphaValue = 255.0f;
+    this->mode = FADE_OUT;
 }
 
 void SpriteActor::initialize()
 {
 	this->sprite = new sf::Sprite();
 	updateSpriteTexture();
-//	applyScale();
-
 	if (this->getPosition().x == 0 && this->getPosition().y == 0) {
 		this->setPosition(0.f, (float)BaseRunner::WINDOW_HEIGHT * 0.25f);
 	}
@@ -38,6 +38,15 @@ void SpriteActor::update(sf::Time deltaTime)
     sf::Vector2f pos = this->getPosition();
     pos.x += speed * deltaTime.asSeconds();
     this->setPosition(pos.x, pos.y);
+
+    if (isFading) {
+        applyFadeTransition(deltaTime);
+        this->sprite->setColor(sf::Color(255, 255, 255, this->alphaValue));
+
+        if (this->alphaValue <= 0)
+            this->isActive = false;
+
+    }
 }
 
 void SpriteActor::setSpeed(float speed)
@@ -50,11 +59,6 @@ void SpriteActor::setSwitchTimer(float timer)
     this->switchTimer = timer;
 }
 
-//void SpriteActor::setSca(float scale)
-//{
-//    this->scale = scale;
-//}
-
 void SpriteActor::updateSpriteTexture()
 {
     std::string texName = baseName + std::to_string(frameIndex);
@@ -66,10 +70,4 @@ void SpriteActor::updateSpriteTexture()
         //missing texture
     }
 }
-
-//void SpriteActor::applyScale()
-//{
-//    if (this->sprite)
-//        this->sprite->setScale(scale, scale);
-//}
 

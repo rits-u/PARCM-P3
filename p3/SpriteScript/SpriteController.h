@@ -15,6 +15,8 @@ public:
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
 
+	SpriteActor* getActor();
+
 private:
 	void spawnNextActor();
 	void removeCurrentActor();
@@ -29,6 +31,8 @@ private:
 	float defaultSpeed = 200.f;
 	float defaultScale = 0.5f;
 	int numFrames = 6;
+
+	bool isFading;
 
 };
 
