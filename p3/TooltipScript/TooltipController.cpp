@@ -32,6 +32,7 @@ void TooltipController::update(sf::Time deltaTime)
 {
     if (bClick) 
         {
+            std::cout << "clicked, changed tip" << std::endl;
             if (tipCounter >= 3)tipCounter = 0;
             else tipCounter++;
             bClick = false;

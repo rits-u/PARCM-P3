@@ -14,7 +14,7 @@ class BGObject : public AGameObject, public FadeTransition
 		void update(sf::Time deltaTime);
 	private:
 		String textureMap;
-		const float SPEED_MULTIPLIER = 200.0f;
+		const float SPEED_MULTIPLIER = 180.0f;
 		float scrollOffset = 0.0f;
 };
 

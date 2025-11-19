@@ -22,16 +22,19 @@ public:
 	void OnFinishedExecution() override;
 
 private:
-	int loadedAsset;
+	std::atomic<int> loadedAsset;
 	int assetsTotal;
+
+
 	typedef std::vector<IconObject*> IconList;
 	IconList iconList;
 
 	//create a thread pool that has only 1 worker thread
-	ThreadPool threadPool = ThreadPool(2);
+
+	ThreadPool threadPool = ThreadPool(3);
 
 	enum StreamingType { BATCH_LOAD = 0, SINGLE_STREAM = 1 };
-	const float STREAMING_LOAD_DELAY = 1000.0f;
+	const float STREAMING_LOAD_DELAY = 500.0f;
 	const StreamingType streamingType = SINGLE_STREAM;
 	float ticks = 0.0f;
 	bool startedStreaming = false;

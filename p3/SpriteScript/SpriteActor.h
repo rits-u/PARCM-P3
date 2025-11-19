@@ -24,7 +24,7 @@ private:
     int maxFrames = 1;
     int frameIndex = 0;
 
-    float switchTimer = 0.1f;
+    float switchTimer = 0.5f;
     float frameTime = 0.0f;
 
     float speed = 100.0f; //pixels per second

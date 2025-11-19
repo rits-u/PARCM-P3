@@ -50,6 +50,21 @@ void TextureManager::loadSprites()
 		storeTexture("Ollie" + std::to_string(i), "Media/Characters/ollie_frames/Ollie" + std::to_string(i) + ".gif");
 		storeTexture("Fauna" + std::to_string(i), "Media/Characters/fauna_frames/Fauna" + std::to_string(i) + ".gif");
 		storeTexture("Aqua" + std::to_string(i), "Media/Characters/aqua_frames/Aqua" + std::to_string(i) + ".gif");
+		storeTexture("Amelia" + std::to_string(i), "Media/Characters/amelia_frames/Amelia" + std::to_string(i) + ".gif");
+		storeTexture("Ayame" + std::to_string(i), "Media/Characters/ayame_frames/Ayame" + std::to_string(i) + ".gif");
+		storeTexture("Azki" + std::to_string(i), "Media/Characters/azki_frames/Azki" + std::to_string(i) + ".gif");
+		storeTexture("Fubuki" + std::to_string(i), "Media/Characters/fubuki_frames/Fubuki" + std::to_string(i) + ".gif");
+		storeTexture("Gura" + std::to_string(i), "Media/Characters/gura_frames/Gura" + std::to_string(i) + ".gif");
+		storeTexture("Korone" + std::to_string(i), "Media/Characters/korone_frames/Korone" + std::to_string(i) + ".gif");
+		storeTexture("Kronii" + std::to_string(i), "Media/Characters/kronii_frames/Kronii" + std::to_string(i) + ".gif");
+		storeTexture("Marine" + std::to_string(i), "Media/Characters/marine_frames/Marine" + std::to_string(i) + ".gif");
+		storeTexture("Matsuri" + std::to_string(i), "Media/Characters/matsuri_frames/Matsuri" + std::to_string(i) + ".gif");
+		storeTexture("Miko" + std::to_string(i), "Media/Characters/miko_frames/Miko" + std::to_string(i) + ".gif");
+		storeTexture("Moona" + std::to_string(i), "Media/Characters/moona_frames/Moona" + std::to_string(i) + ".gif");
+		storeTexture("Mumei" + std::to_string(i), "Media/Characters/mumei_frames/Mumei" + std::to_string(i) + ".gif");
+		storeTexture("Subaru" + std::to_string(i), "Media/Characters/subaru_frames/Subaru" + std::to_string(i) + ".gif");
+		storeTexture("Towa" + std::to_string(i), "Media/Characters/towa_frames/Towa" + std::to_string(i) + ".gif");
+		storeTexture("Watame" + std::to_string(i), "Media/Characters/watame_frames/Watame" + std::to_string(i) + ".gif");
 	}
 }
 
@@ -143,15 +158,15 @@ void TextureManager::loadSingleStreamAsset(int index)
 
 	//sort by numbers
 	std::sort(files.begin(), files.end(), [](const auto& a, const auto& b) {
-		int numA = std::stoi(a.path().stem().string());
-		int numB = std::stoi(b.path().stem().string());
-		return numA < numB;
+		int numA = std::stoi(a.path().stem().string()); //strings to numbers so that
+		int numB = std::stoi(b.path().stem().string());	//files can be sorted properly,
+		return numA < numB;								//since the assets to be loaded are named as numbers
 	});
 
 	//instantiate as texture
 	if (index < files.size()) {
 		std::string filepath = files[index].path().string();
-		std::string assetName = files[index].path().stem().string(); // filename without extension
+		std::string assetName = files[index].path().stem().string();
 		this->instantiateAsTexture(filepath, assetName, true);
 	}
 

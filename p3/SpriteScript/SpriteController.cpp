@@ -5,7 +5,10 @@
 SpriteController::SpriteController(std::string name) : AGameObject(name)
 {
     srand(time(nullptr));
-    this->characterNames = { "Suisei", "Pekora", "Ollie", "Fauna", "Aqua" };
+    this->characterNames = { "Suisei", "Pekora", "Ollie", "Fauna", "Aqua", 
+                             "Amelia", "Ayame", "Azki", "Fubuki", "Gura",
+                             "Korone", "Kronii", "Marine", "Matsuri", "Miko",
+                             "Moona", "Mumei", "Subaru", "Towa", "Watame"};
     this->prevIndex = -1;
 }
 

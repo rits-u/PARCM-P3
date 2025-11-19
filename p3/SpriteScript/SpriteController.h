@@ -36,7 +36,7 @@ private:
 	int currentIndex = 0;
 	bool isFading;
 	int prevIndex = 0;
-	int numCharacters = 5;
+	int numCharacters = 20;
 
 };
 
