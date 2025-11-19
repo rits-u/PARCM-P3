@@ -112,6 +112,9 @@ void TextureDisplay::FadeOutAll()
 	BGObject* bg = (BGObject*)GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG");
 	bg->setIsFading(true);
 
+	BGObject* logo = (BGObject*)GameObjectManager::getInstance()->findObjectByName("GameLogo");
+	logo->setIsFading(true);
+
 	SpriteController* controller = (SpriteController*)GameObjectManager::getInstance()->findObjectByName("SpriteController");
 	controller->getActor()->setIsFading(true);
 	GameObjectManager::getInstance()->deleteObjectByName("SpriteController");

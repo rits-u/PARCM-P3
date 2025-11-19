@@ -12,10 +12,13 @@ public:
 	virtual void changeFadeMode(FadeMode mode);
 	virtual void setIsFading(bool isFading);
 	virtual void setAlphaValue(float alphaValue);
+	virtual void setFadeSpeed(float speed);
 
 protected:
 	bool isFading = false;
 	FadeMode mode = FADE_OUT;
 	float alphaValue;
+	float fadeSpeed = 150.0f;
+
 };
 

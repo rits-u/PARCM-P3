@@ -9,6 +9,7 @@
 #include "SpriteScript/SpriteController.h"
 #include "Utils/FadeTransition.h"
 #include "TooltipScript/TooltipController.h"
+#include "ImageObject.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -25,16 +26,12 @@ BaseRunner::BaseRunner() :
 
 	window.setFramerateLimit(FRAME_RATE);
 
-	//load objects
-	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG", FadeTransition::FADE_OUT);
+	//loading scene
+	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBGg", FadeTransition::FADE_OUT);
 	GameObjectManager::getInstance()->addObject(loadingScreenBG);
 
-	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG", FadeTransition::FADE_IN);
-	GameObjectManager::getInstance()->addObject(gameSceneBG);
-	gameSceneBG->setActiveSelf(false);
-
-	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
+	ImageObject* gameLogo = new ImageObject("GameLogo", "HoloCureLogo", FadeTransition::FADE_OUT);
+	GameObjectManager::getInstance()->addObject(gameLogo);
 
 	SpriteController* spriteController = new SpriteController("SpriteController");
 	GameObjectManager::getInstance()->addObject(spriteController);
@@ -42,8 +39,17 @@ BaseRunner::BaseRunner() :
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
 
-	TooltipController* tooltipController = new TooltipController("TooltipController");
-	GameObjectManager::getInstance()->addObject(tooltipController);
+
+	//game scene
+	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG", FadeTransition::FADE_IN);
+	GameObjectManager::getInstance()->addObject(gameSceneBG);
+	gameSceneBG->setActiveSelf(false); gameSceneBG->setFadeSpeed(220.0f);
+
+	TextureDisplay* display = new TextureDisplay();
+	GameObjectManager::getInstance()->addObject(display);
+
+	//TooltipController* tooltipController = new TooltipController("TooltipController");
+	//GameObjectManager::getInstance()->addObject(tooltipController);
 
 
 	//FPSCounter* fpsCounter = new FPSCounter();
