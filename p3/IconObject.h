@@ -1,6 +1,8 @@
 #pragma once
 #include "AGameObject.h"
-class IconObject :    public AGameObject
+#include "Utils/FadeTransition.h"
+
+class IconObject :    public AGameObject, public FadeTransition
 {
 public:
 	IconObject(String name, int textureIndex);

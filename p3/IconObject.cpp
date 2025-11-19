@@ -8,7 +8,7 @@ IconObject::IconObject(String name, int textureIndex): AGameObject(name)
 	this->textureIndex = textureIndex;
 	this->alphaValue = 0.0f;
 	this->sprite->setColor(sf::Color(255, 255, 255, this->alphaValue));
-	this->mode = FADE_OUT;
+	this->mode = FADE_IN;
 }
 
 void IconObject::initialize()
@@ -30,7 +30,7 @@ void IconObject::processInput(sf::Event event)
 void IconObject::update(sf::Time deltaTime)
 {
 	if (this->isFading) {
-		fadeTransition(deltaTime);
+		applyFadeTransition(deltaTime);
 		this->sprite->setColor(sf::Color(255, 255, 255, this->alphaValue));
 	}
 }

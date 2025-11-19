@@ -9,8 +9,8 @@
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
 	this->loadedAsset = 0;
-	this->assetsTotal = 47;
-	this->mode = FADE_OUT;
+	this->assetsTotal = 5;
+	//this->mode = FADE_OUT;
 }
 
 void TextureDisplay::initialize()
@@ -55,17 +55,17 @@ void TextureDisplay::update(sf::Time deltaTime)
 	
 	}
 
-	if (this->isFading)
-		fadeTransition(deltaTime);
+	//if (this->isFading)
+	//	fadeTransition(deltaTime);
 
 }
 
 void TextureDisplay::draw(sf::RenderWindow* targetWindow)
 {
-	sf::RectangleShape fadeRect;
-	fadeRect.setSize(sf::Vector2f(BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT));
-	fadeRect.setFillColor(sf::Color(0, 0, 0, this->alphaValue));
-	targetWindow->draw(fadeRect);
+	//sf::RectangleShape fadeRect;
+	//fadeRect.setSize(sf::Vector2f(BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT));
+	//fadeRect.setFillColor(sf::Color(0, 0, 0, this->alphaValue));
+	//targetWindow->draw(fadeRect);
 }
 
 
@@ -77,7 +77,7 @@ void TextureDisplay::OnFinishedExecution()
 	std::cout << "asset " << this->loadedAsset << std::endl;
 	
 	if (this->loadedAsset >= this->assetsTotal) {
-		this->isFading = true; 
+	//	this->isFading = true; 
 		IETThread::sleep(3000);
 
 		spawnAllObjects();
@@ -133,7 +133,7 @@ void TextureDisplay::spawnAllObjects()
 
 void TextureDisplay::ApplyFadeToAll()
 {
-	this->isFading = true;
+	//this->isFading = true;
 	GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
 	GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
 	GameObjectManager::getInstance()->findObjectByName("SpriteController")->setActiveSelf(true);

@@ -152,6 +152,7 @@
     <ClInclude Include="AGameObject.h" />
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BGObject.h" />
+    <ClInclude Include="Utils\FadeTransition.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="IconObject.h" />
     <ClInclude Include="LoadAssetThread.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="AGameObject.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="Utils\FadeTransition.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="IconObject.cpp" />
     <ClCompile Include="LoadAssetThread.cpp" />

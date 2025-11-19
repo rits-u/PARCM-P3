@@ -14,27 +14,27 @@ AGameObject::String AGameObject::getName() {
 	return this->name;
 }
 
-void AGameObject::fadeTransition(sf::Time deltaTime)
-{
-	switch (this->mode) {
-	case FADE_IN:
-		this->alphaValue -= 150.f * deltaTime.asSeconds(); //speed of fade
-		if (this->alphaValue < 0) {
-			this->alphaValue = 0;
-			this->isFading = false;
-			this->mode = FADE_OUT;
-		}
-		break;
-	case FADE_OUT:
-		this->alphaValue += 150.f * deltaTime.asSeconds(); //speed of fade
-		if (this->alphaValue > 255) {
-			this->alphaValue = 255;
-			this->isFading = false;
-			this->mode = FADE_IN;
-		}
-		break;
-	}
-}
+//void AGameObject::fadeTransition(sf::Time deltaTime)
+//{
+//	switch (this->mode) {
+//	case FADE_IN:
+//		this->alphaValue -= 150.f * deltaTime.asSeconds(); //speed of fade
+//		if (this->alphaValue < 0) {
+//			this->alphaValue = 0;
+//			this->isFading = false;
+//			this->mode = FADE_OUT;
+//		}
+//		break;
+//	case FADE_OUT:
+//		this->alphaValue += 150.f * deltaTime.asSeconds(); //speed of fade
+//		if (this->alphaValue > 255) {
+//			this->alphaValue = 255;
+//			this->isFading = false;
+//			this->mode = FADE_IN;
+//		}
+//		break;
+//	}
+//}
 
 void AGameObject::draw(sf::RenderWindow* targetWindow) {
 	if (this->sprite != NULL) {
@@ -72,23 +72,23 @@ void AGameObject::setActiveSelf(bool isActive)
 	this->isActive = isActive;
 }
 
-void AGameObject::changeFadeMode()
-{
-	if (this->mode = FADE_IN)
-		this->mode = FADE_OUT;
-	else
-		this->mode = FADE_IN;
-}
-
-void AGameObject::setIsFading(bool isFading)
-{
-	this->isFading = isFading;
-}
-
-void AGameObject::setAlphaValue(float alphaValue)
-{
-	this->alphaValue = alphaValue;
-}
+//void AGameObject::changeFadeMode()
+//{
+//	if (this->mode = FADE_IN)
+//		this->mode = FADE_OUT;
+//	else
+//		this->mode = FADE_IN;
+//}
+//
+//void AGameObject::setIsFading(bool isFading)
+//{
+//	this->isFading = isFading;
+//}
+//
+//void AGameObject::setAlphaValue(float alphaValue)
+//{
+//	this->alphaValue = alphaValue;
+//}
 
 sf::Vector2f AGameObject::getPosition()
 {
@@ -109,7 +109,7 @@ bool AGameObject::getActiveSelf() {
 	return this->isActive;
 }
 
-float AGameObject::getAlphaValue()
-{
-	return this->alphaValue;
-}
+//float AGameObject::getAlphaValue()
+//{
+//	return this->alphaValue;
+//}
