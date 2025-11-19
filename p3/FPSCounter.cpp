@@ -1,6 +1,10 @@
 #include "FPSCounter.h"
-#include <iostream>
 #include "BaseRunner.h"
+
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <cmath>
 
 FPSCounter::FPSCounter(): AGameObject("FPSCounter")
 {
@@ -20,10 +24,13 @@ void FPSCounter::initialize()
 
 	this->statsText = new sf::Text();
 	this->statsText->setFont(*font);
-	this->statsText->setPosition(SettingsUtils::WINDOW_WIDTH - 160, SettingsUtils::WINDOW_HEIGHT - 70);
+	this->statsText->setFillColor(sf::Color(177, 117, 255));
+	this->statsText->setPosition(SettingsUtils::WINDOW_WIDTH - 145, SettingsUtils::WINDOW_HEIGHT - 600);
 	this->statsText->setOutlineColor(sf::Color(1.0f, 1.0f, 1.0f));
 	this->statsText->setOutlineThickness(2.5f);
-	this->statsText->setCharacterSize(35);
+	this->statsText->setCharacterSize(24);
+
+	this->updateTime = sf::Time::Zero;
 }
 
 void FPSCounter::processInput(sf::Event event)
@@ -32,6 +39,7 @@ void FPSCounter::processInput(sf::Event event)
 
 void FPSCounter::update(sf::Time deltaTime)
 {
+	//std::cout << deltaTime.asMicroseconds() << std::endl;
 	this->updateFPS(deltaTime);
 }
 
@@ -51,8 +59,14 @@ void FPSCounter::updateFPS(sf::Time elapsedTime)
 	float currentFPS = 1.f / elapsedTime.asSeconds();
 	fps = fps * smoothing + currentFPS * (1.0f - smoothing);
 
-	std::string fpsText = "FPS: " + std::to_string(fps) + "\n";
-	this->statsText->setString(fpsText);
+	this->updateTime += elapsedTime;
+	
+	if (this->updateTime.asSeconds() >= 0.5f) {
+		std::stringstream ss;
+		ss << "FPS: " << std::fixed << std::setprecision(2) << fps;
+		this->statsText->setString(ss.str());
+		this->updateTime = sf::Time::Zero;
+	}
 
 	if (fps <= 50) {
 		std::cout << "FPS dropped below 50" << std::endl;

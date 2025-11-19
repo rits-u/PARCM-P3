@@ -1,2 +1,3 @@
 Media/Textures/HoloCureBG.png
 Media/Textures/HalloweenCastleBG.png
+Media/Textures/HoloCureLogo.png

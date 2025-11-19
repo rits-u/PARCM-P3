@@ -15,6 +15,7 @@ class FPSCounter :    public AGameObject
 		sf::Time updateTime;
 		sf::Text* statsText;
 		int framesPassed = 0;
+		float interval = 500;
 
 		void updateFPS(sf::Time elapsedTime);
 		
