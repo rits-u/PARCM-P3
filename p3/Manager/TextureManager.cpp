@@ -49,10 +49,8 @@ void TextureManager::loadSprites()
 		storeTexture("Pekora" + std::to_string(i), "Media/Characters/pekora_frames/Pekora" + std::to_string(i) + ".gif");
 		storeTexture("Ollie" + std::to_string(i), "Media/Characters/ollie_frames/Ollie" + std::to_string(i) + ".gif");
 		storeTexture("Fauna" + std::to_string(i), "Media/Characters/fauna_frames/Fauna" + std::to_string(i) + ".gif");
-		storeTexture("Aqua" + std::to_string(i), "Media/Characters/auqa_frames/Aqua" + std::to_string(i) + ".gif");
+		storeTexture("Aqua" + std::to_string(i), "Media/Characters/aqua_frames/Aqua" + std::to_string(i) + ".gif");
 	}
-
-
 }
 
 void TextureManager::storeTexture(std::string name, std::string path)
@@ -75,6 +73,44 @@ sf::Texture* TextureManager::getTexture(std::string key)
 	{
 		//std::cout << key << " found" << std::endl;
 		return VtuberMap[key];
+	}
+
+	else
+	{
+		std::cout << "No texture found for " << key << std::endl;
+		return nullptr;
+	}
+}
+
+
+void TextureManager::loadInitialTooltips()
+{
+	//Loading Tooltips
+	for (int i = 0; i < 4; i++)
+	{
+		storeTooltip("Tooltip" + std::to_string(i), "Media/Tooltips/Tooltip" + std::to_string(i) + ".png");
+	}
+}
+
+void TextureManager::storeTooltip(std::string name, std::string path)
+{
+	loadTooltip(name, path);
+	sf::Texture* assetTex;
+	assetTex = getTooltip(name);
+}
+
+void TextureManager::loadTooltip(std::string key, std::string path)
+{
+	sf::Texture* texture = new sf::Texture();
+	texture->loadFromFile(path);
+	TooltipMap[key] = texture;
+}
+
+sf::Texture* TextureManager::getTooltip(std::string key)
+{
+	if (TooltipMap[key] != nullptr)
+	{
+		return TooltipMap[key];
 	}
 
 	else

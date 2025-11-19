@@ -152,6 +152,7 @@
     <ClInclude Include="AGameObject.h" />
     <ClInclude Include="BaseRunner.h" />
     <ClInclude Include="BGObject.h" />
+    <ClInclude Include="FadeTransition.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="IconObject.h" />
     <ClInclude Include="LoadAssetThread.h" />
@@ -172,6 +173,8 @@
     <ClInclude Include="ThreadTool\IWorkerAction.h" />
     <ClInclude Include="ThreadTool\ThreadPool.h" />
     <ClInclude Include="ThreadTool\WorkerThread.h" />
+    <ClInclude Include="TooltipScript\Tooltip.h" />
+    <ClInclude Include="TooltipScript\TooltipController.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\SettingsUtils.h" />
     <ClInclude Include="Utils\StringUtils.h" />
@@ -180,6 +183,7 @@
     <ClCompile Include="AGameObject.cpp" />
     <ClCompile Include="BaseRunner.cpp" />
     <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="FadeTransition.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="IconObject.cpp" />
     <ClCompile Include="LoadAssetThread.cpp" />
@@ -199,6 +203,8 @@
     <ClCompile Include="ThreadTool\IETThread.cpp" />
     <ClCompile Include="ThreadTool\ThreadPool.cpp" />
     <ClCompile Include="ThreadTool\WorkerThread.cpp" />
+    <ClCompile Include="TooltipScript\Tooltip.cpp" />
+    <ClCompile Include="TooltipScript\TooltipController.cpp" />
     <ClCompile Include="Utils\MathUtils.cpp" />
     <ClCompile Include="Utils\SettingsUtils.cpp" />
     <ClCompile Include="Utils\StringUtils.cpp" />
