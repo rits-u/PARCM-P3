@@ -27,7 +27,7 @@ BaseRunner::BaseRunner() :
 	window.setFramerateLimit(FRAME_RATE);
 
 	//loading scene
-	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBGg", FadeTransition::FADE_OUT);
+	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG", FadeTransition::FADE_OUT);
 	GameObjectManager::getInstance()->addObject(loadingScreenBG);
 
 	ImageObject* gameLogo = new ImageObject("GameLogo", "HoloCureLogo", FadeTransition::FADE_OUT);
