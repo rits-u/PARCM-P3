@@ -28,6 +28,13 @@ public:
 	void storeTexture(std::string, std::string);
 	std::unordered_map<std::string, sf::Texture*> VtuberMap;
 
+	//TooltipFunctions
+	void loadInitialTooltips();
+	sf::Texture* getTooltip(std::string);
+	void loadTooltip(std::string, std::string);
+	void storeTooltip(std::string, std::string);
+	std::unordered_map<std::string, sf::Texture*> TooltipMap;
+
 
 
 private:

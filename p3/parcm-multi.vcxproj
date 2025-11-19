@@ -173,6 +173,8 @@
     <ClInclude Include="ThreadTool\IWorkerAction.h" />
     <ClInclude Include="ThreadTool\ThreadPool.h" />
     <ClInclude Include="ThreadTool\WorkerThread.h" />
+    <ClInclude Include="TooltipScript\Tooltip.h" />
+    <ClInclude Include="TooltipScript\TooltipController.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\SettingsUtils.h" />
     <ClInclude Include="Utils\StringUtils.h" />
@@ -201,6 +203,8 @@
     <ClCompile Include="ThreadTool\IETThread.cpp" />
     <ClCompile Include="ThreadTool\ThreadPool.cpp" />
     <ClCompile Include="ThreadTool\WorkerThread.cpp" />
+    <ClCompile Include="TooltipScript\Tooltip.cpp" />
+    <ClCompile Include="TooltipScript\TooltipController.cpp" />
     <ClCompile Include="Utils\MathUtils.cpp" />
     <ClCompile Include="Utils\SettingsUtils.cpp" />
     <ClCompile Include="Utils\StringUtils.cpp" />

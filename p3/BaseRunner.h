@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Utils/SettingsUtils.h"
+#include "TooltipScript/Tooltip.h"
 
 using namespace std;
 class BaseRunner : private sf::NonCopyable

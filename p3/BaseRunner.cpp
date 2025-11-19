@@ -8,6 +8,7 @@
 #include "Scenes/LoadingScene.h"
 #include "SpriteScript/SpriteController.h"
 #include "Utils/FadeTransition.h"
+#include "TooltipScript/TooltipController.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -20,6 +21,7 @@ BaseRunner::BaseRunner() :
 	//load initial textures
 	TextureManager::getInstance()->loadFromAssetList();
 	TextureManager::getInstance()->loadSprites();
+	TextureManager::getInstance()->loadInitialTooltips();
 
 	window.setFramerateLimit(FRAME_RATE);
 
@@ -39,6 +41,13 @@ BaseRunner::BaseRunner() :
 
 	FPSCounter* fpsCounter = new FPSCounter();
 	GameObjectManager::getInstance()->addObject(fpsCounter);
+
+	TooltipController* tooltipController = new TooltipController("TooltipController");
+	GameObjectManager::getInstance()->addObject(tooltipController);
+
+
+	//FPSCounter* fpsCounter = new FPSCounter();
+	//GameObjectManager::getInstance()->addObject(fpsCounter);
 
 	//SpriteRunner* runner = new SpriteRunner();
 	//GameObjectManager::getInstance()->addObject(runner);
