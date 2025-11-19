@@ -3,7 +3,7 @@
 
 SpriteController::SpriteController(std::string name) : AGameObject(name)
 {
-    this->characterNames = { "Suisei", "Pekora" };
+    this->characterNames = { "Suisei", "Pekora", "Ollie", "Fauna", "Aqua"};
     this->currentIndex = 0;
 
     this->spawnX = 0.f;
