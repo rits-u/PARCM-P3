@@ -27,7 +27,7 @@ BaseRunner::BaseRunner() :
 
 	window.setFramerateLimit(FRAME_RATE);
 
-	//loading scene
+	//objects
 	BGObject* loadingScreenBG = new BGObject("LoadingScreenBG", "HoloCureBG", FadeTransition::FADE_OUT);
 	GameObjectManager::getInstance()->addObject(loadingScreenBG);
 
@@ -43,7 +43,6 @@ BaseRunner::BaseRunner() :
 	TextureDisplay* display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);
 
-	//game scene
 	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG", FadeTransition::FADE_IN);
 	GameObjectManager::getInstance()->addObject(gameSceneBG);
 	gameSceneBG->setActiveSelf(false); gameSceneBG->setFadeSpeed(220.0f);

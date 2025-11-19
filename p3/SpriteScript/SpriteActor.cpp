@@ -13,7 +13,7 @@ SpriteActor::SpriteActor(const std::string& baseName, int frameCount) : AGameObj
 void SpriteActor::initialize()
 {
 	this->sprite = new sf::Sprite();
-    this->setPosition(-20.0f, 370.0f);
+    this->setPosition(-20.0f, 315.0f);
     this->setScale(2.5f, 2.5f);
     this->speed = 300.0f;
     updateSpriteTexture();

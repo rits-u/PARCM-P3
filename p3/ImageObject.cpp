@@ -30,7 +30,7 @@ void ImageObject::initialize()
 	this->sprite->setTexture(*texture);
 	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
 
-	this->setPosition(BaseRunner::WINDOW_WIDTH * 0.32, BaseRunner::WINDOW_HEIGHT * 0.08);
+	this->setPosition(BaseRunner::WINDOW_WIDTH * 0.32, BaseRunner::WINDOW_HEIGHT * 0.11);
 	this->setScale(0.5f, 0.5f);
 
 }

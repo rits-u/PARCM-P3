@@ -15,7 +15,7 @@ void Tooltip::initialize()
     applyScale();
 
     //270.0f
-    this->setPosition(BaseRunner::WINDOW_WIDTH/5.0f,80.0f);
+    this->setPosition(BaseRunner::WINDOW_WIDTH/6.62f, 83.0f);
     this->changeFadeMode(FADE_OUT);
 }
 

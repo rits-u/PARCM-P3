@@ -19,8 +19,8 @@ void LoadingBar::initialize()
 
 	sf::Texture* progressTex = TextureManager::getInstance()->getFromTextureMap("bar_progress", 0);
 	this->barProgress->setTexture(*progressTex);
-	this->barBorder->setPosition(230.0f, 635.f);
-	this->barProgress->setPosition(239.0f, 641.f);
+	this->barBorder->setPosition(230.0f, 644.f);
+	this->barProgress->setPosition(239.0f, 650.f);
 
 	this->changeFadeMode(FADE_OUT);
 }
