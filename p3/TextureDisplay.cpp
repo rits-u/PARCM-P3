@@ -11,7 +11,7 @@
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
 	this->loadedAsset = 0;
-	this->assetsTotal = 47;
+	this->assetsTotal = 14;
 }
 
 void TextureDisplay::initialize()
