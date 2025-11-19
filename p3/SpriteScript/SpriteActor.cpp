@@ -13,10 +13,10 @@ SpriteActor::SpriteActor(const std::string& baseName, int frameCount) : AGameObj
 void SpriteActor::initialize()
 {
 	this->sprite = new sf::Sprite();
-	updateSpriteTexture();
-	if (this->getPosition().x == 0 && this->getPosition().y == 0) {
-		this->setPosition(0.f, (float)BaseRunner::WINDOW_HEIGHT * 0.25f);
-	}
+    this->setPosition(-20.0f, 370.0f);
+    this->setScale(2.5f, 2.5f);
+    this->speed = 300.0f;
+    updateSpriteTexture();
 }
 
 void SpriteActor::processInput(sf::Event event)
@@ -70,4 +70,10 @@ void SpriteActor::updateSpriteTexture()
         //missing texture
     }
 }
+
+int SpriteActor::generateRNG(int min, int max)
+{
+    return min + rand() % (max - min + 1);
+}
+
 

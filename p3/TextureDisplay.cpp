@@ -11,7 +11,7 @@
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
 	this->loadedAsset = 0;
-	this->assetsTotal = 5;
+	this->assetsTotal = 47;
 }
 
 void TextureDisplay::initialize()
@@ -52,8 +52,8 @@ void TextureDisplay::update(sf::Time deltaTime)
 		}
 
 		this->ticks = 0;
-
 	}
+
 
 }
 
@@ -73,7 +73,6 @@ void TextureDisplay::OnFinishedExecution()
 
 void TextureDisplay::spawnObject()
 {
-	//std::cout << "hello" << std::endl;
 	guard.lock();
 	String objectName = "Icon_" + to_string(this->iconList.size());
 	IconObject* iconObj = new IconObject(objectName, this->iconList.size());
@@ -85,7 +84,6 @@ void TextureDisplay::spawnObject()
 	int spacing = 6;
 
 	//set position
-	//int IMG_WIDTH = 68; int IMG_HEIGHT = 68;
 	int IMG_WIDTH = 1032 * scale.x + spacing; int IMG_HEIGHT = 912 * scale.y + spacing; //1032 912
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
@@ -132,20 +130,3 @@ void TextureDisplay::FadeInAll()
 	}
 
 }
-
-//void TextureDisplay::ApplyFadeToAll()
-//{
-//	//this->isFading = true;
-//	/*GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG")->setActiveSelf(false);
-//	GameObjectManager::getInstance()->findObjectByName("GameSceneBG")->setActiveSelf(true);
-//	GameObjectManager::getInstance()->findObjectByName("SpriteController")->setActiveSelf(true);*/
-//
-//	//BGObject* bg = (BGObject*)GameObjectManager::getInstance()->findObjectByName("LoadingScreenBG");
-//	//bg->setIsFading(true);
-//	BGObject* game = (BGObject*)GameObjectManager::getInstance()->findObjectByName("GameSceneBG");
-//	game->setActiveSelf(true); game->setIsFading(true);
-//	
-//	for (int i = 0; i < this->assetsTotal; i++) {
-//		this->iconList[i]->setIsFading(true);
-//	}
-//}

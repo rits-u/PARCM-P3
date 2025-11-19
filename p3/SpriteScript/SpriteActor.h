@@ -14,9 +14,11 @@ public:
 
 	void setSpeed(float speed);
 	void setSwitchTimer(float timer);
+	//void 
 
 private:
 	void updateSpriteTexture();
+	int generateRNG(int min, int max);
 
     std::string baseName;
     int maxFrames = 1;
@@ -26,5 +28,8 @@ private:
     float frameTime = 0.0f;
 
     float speed = 100.0f; //pixels per second
+	//bool isAvailable = true;
 };
+
+
 

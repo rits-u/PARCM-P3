@@ -27,7 +27,7 @@ private:
 	IconList iconList;
 
 	//create a thread pool that has only 1 worker thread
-	ThreadPool threadPool = ThreadPool(1);
+	ThreadPool threadPool = ThreadPool(2);
 
 	enum StreamingType { BATCH_LOAD = 0, SINGLE_STREAM = 1 };
 	const float STREAMING_LOAD_DELAY = 1000.0f;
@@ -42,10 +42,10 @@ private:
 
 	void spawnObject();
 	void spawnAllObjects();
-//	void ApplyFadeToAll();
 	void FadeInAll();
 	void FadeOutAll();
 
 	std::mutex guard;
+	bool loaded;
 };
 

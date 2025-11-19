@@ -22,7 +22,6 @@ void FadeTransition::applyFadeTransition(sf::Time deltaTime)
 		}
 		break;
 	case FADE_IN:
-		std::cout << "ahsdashdaa fade: " << this->alphaValue << std::endl;
 		this->alphaValue += 150.f * deltaTime.asSeconds(); //speed of fade
 		if (this->alphaValue > 255) {
 			this->alphaValue = 255;

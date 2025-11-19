@@ -49,7 +49,7 @@ void TextureManager::loadSprites()
 		storeTexture("Pekora" + std::to_string(i), "Media/Characters/pekora_frames/Pekora" + std::to_string(i) + ".gif");
 		storeTexture("Ollie" + std::to_string(i), "Media/Characters/ollie_frames/Ollie" + std::to_string(i) + ".gif");
 		storeTexture("Fauna" + std::to_string(i), "Media/Characters/fauna_frames/Fauna" + std::to_string(i) + ".gif");
-		storeTexture("Aqua" + std::to_string(i), "Media/Characters/auqa_frames/Aqua" + std::to_string(i) + ".gif");
+		storeTexture("Aqua" + std::to_string(i), "Media/Characters/aqua_frames/Aqua" + std::to_string(i) + ".gif");
 	}
 
 
@@ -67,6 +67,7 @@ void TextureManager::loadTexture(std::string key, std::string path)
 	sf::Texture* texture = new sf::Texture();
 	texture->loadFromFile(path);
 	VtuberMap[key] = texture;
+	//std::cout << "size: " << this->VtuberMap.size() << std::endl;
 }
 
 sf::Texture* TextureManager::getTexture(std::string key)
