@@ -2,30 +2,27 @@
 #include "Manager/TextureManager.h"
 
 #include <iostream>
+#include <algorithm>
 
-LoadingBar::LoadingBar(String name) : AGameObject(name)
+LoadingBar::LoadingBar(String name, int totalAssets) : AGameObject(name)
 {
-}
-
-LoadingBar::LoadingBar(String name, String textureMap) : AGameObject(name)
-{
-	this->textureMap = textureMap;
+	this->barBorder = new sf::Sprite();
+	this->barProgress = new sf::Sprite();
 }
 
 void LoadingBar::initialize()
-{
+{ 
 	std::cout << "Declared as " << this->getName() << "\n";
 
-	//assign texture
-	this->sprite = new sf::Sprite();
-	//sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("Desert", 0);
-	sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap(this->textureMap, 0);
-//	texture->setRepeated(true);
-	this->sprite->setTexture(*texture);
-//	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
-	//make BG height x k to emulate repeating BG.
-	//this->sprite->setTextureRect(sf::IntRect(0, 0, BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT * 8));
-	//this->setPosition(0, -BaseRunner::WINDOW_HEIGHT * 7);
+	sf::Texture* borderTex = TextureManager::getInstance()->getFromTextureMap("bar_border", 0);
+	this->barBorder->setTexture(*borderTex);
+
+	sf::Texture* progressTex = TextureManager::getInstance()->getFromTextureMap("bar_progress", 0);
+	this->barProgress->setTexture(*progressTex);
+	this->barBorder->setPosition(230.0f, 635.f);
+	this->barProgress->setPosition(239.0f, 641.f);
+
+	this->changeFadeMode(FADE_OUT);
 }
 
 void LoadingBar::processInput(sf::Event event)
@@ -34,4 +31,22 @@ void LoadingBar::processInput(sf::Event event)
 
 void LoadingBar::update(sf::Time deltaTime)
 {
+	if (this->isFading) {
+		this->barBorder->setColor(sf::Color(255, 255, 255, this->alphaValue));
+		this->barProgress->setColor(sf::Color(255, 255, 255, this->alphaValue));
+	}
+}
+
+void LoadingBar::draw(sf::RenderWindow* targetWindow)
+{
+	targetWindow->draw(*this->barBorder);
+	targetWindow->draw(*this->barProgress);
+}
+
+void LoadingBar::updateLoadingBar(float percentage)
+{
+	this->progress = std::clamp(percentage, 0.0f, 1.0f);
+	sf::IntRect rect = this->barProgress->getTextureRect();
+	rect.width = this->barProgress->getTexture()->getSize().x * this->progress;
+	this->barProgress->setTextureRect(rect);
 }

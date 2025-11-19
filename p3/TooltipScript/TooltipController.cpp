@@ -36,10 +36,19 @@ void TooltipController::update(sf::Time deltaTime)
             else tipCounter++;
             bClick = false;
             spawnNextActor();
-           
-            
+          
         }
  
+}
+
+Tooltip* TooltipController::getCurrentTip()
+{
+    return this->currentTip;
+}
+
+void TooltipController::hideTooltip()
+{
+    this->disabledTip = true;
 }
 
 void TooltipController::spawnNextActor()
@@ -54,15 +63,13 @@ void TooltipController::spawnNextActor()
     actor->initialize();
     GameObjectManager::getInstance()->addObject(actor);
 
-    currentTip = actor;
-
-    
+   this->currentTip = actor;    
 }
 
 void TooltipController::removeCurrentActor()
 {
-    if (currentTip != nullptr) {
-        GameObjectManager::getInstance()->deleteObject(currentTip);
-        currentTip = nullptr;
+    if (this->currentTip != nullptr) {
+        GameObjectManager::getInstance()->deleteObject(this->currentTip);
+        this->currentTip = nullptr;
     }
 }

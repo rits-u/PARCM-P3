@@ -1,6 +1,7 @@
 #pragma once
 #include "AGameObject.h"
 #include "LoadAssetThread.h"
+#include "LoadingBar.h"
 
 #include <mutex>
 
@@ -44,8 +45,11 @@ private:
 	void spawnAllObjects();
 	void FadeInAll();
 	void FadeOutAll();
+	void makeLoadingBar();
 
 	std::mutex guard;
 	bool loaded;
+
+	LoadingBar* loadingBar;
 };
 

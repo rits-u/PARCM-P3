@@ -16,11 +16,17 @@ void Tooltip::initialize()
 
     //270.0f
     this->setPosition(BaseRunner::WINDOW_WIDTH/5.0f,80.0f);
+    this->changeFadeMode(FADE_OUT);
 }
 
 void Tooltip::processInput(sf::Event event) {}
 
-void Tooltip::update(sf::Time deltaTime) {}
+void Tooltip::update(sf::Time deltaTime) {
+    if (isFading) {
+        applyFadeTransition(deltaTime);
+        this->sprite->setColor(sf::Color(255, 255, 255, this->alphaValue));
+    }
+}
 
 void Tooltip::setSwitchTimer(float timer)
 {

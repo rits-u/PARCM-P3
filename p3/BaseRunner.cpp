@@ -10,6 +10,7 @@
 #include "Utils/FadeTransition.h"
 #include "TooltipScript/TooltipController.h"
 #include "ImageObject.h"
+#include "LoadingBar.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -36,27 +37,19 @@ BaseRunner::BaseRunner() :
 	SpriteController* spriteController = new SpriteController("SpriteController");
 	GameObjectManager::getInstance()->addObject(spriteController);
 
-	FPSCounter* fpsCounter = new FPSCounter();
-	GameObjectManager::getInstance()->addObject(fpsCounter);
+	TooltipController* tooltipController = new TooltipController("TooltipController");
+	GameObjectManager::getInstance()->addObject(tooltipController);
 
+	TextureDisplay* display = new TextureDisplay();
+	GameObjectManager::getInstance()->addObject(display);
 
 	//game scene
 	BGObject* gameSceneBG = new BGObject("GameSceneBG", "HalloweenCastleBG", FadeTransition::FADE_IN);
 	GameObjectManager::getInstance()->addObject(gameSceneBG);
 	gameSceneBG->setActiveSelf(false); gameSceneBG->setFadeSpeed(220.0f);
 
-	TextureDisplay* display = new TextureDisplay();
-	GameObjectManager::getInstance()->addObject(display);
-
-	//TooltipController* tooltipController = new TooltipController("TooltipController");
-	//GameObjectManager::getInstance()->addObject(tooltipController);
-
-
-	//FPSCounter* fpsCounter = new FPSCounter();
-	//GameObjectManager::getInstance()->addObject(fpsCounter);
-
-	//SpriteRunner* runner = new SpriteRunner();
-	//GameObjectManager::getInstance()->addObject(runner);
+	FPSCounter* fpsCounter = new FPSCounter();
+	GameObjectManager::getInstance()->addObject(fpsCounter);
 }
 
 void BaseRunner::run() {

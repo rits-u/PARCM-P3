@@ -15,6 +15,8 @@ public:
 	void initialize();
 	void processInput(sf::Event event);
 	void update(sf::Time deltaTime);
+	Tooltip* getCurrentTip();
+	void hideTooltip();
 
 private:
 	void spawnNextActor();
@@ -22,7 +24,7 @@ private:
 
 	int currentIndex = 0;
 
-	Tooltip* currentTip = nullptr;
+	Tooltip* currentTip;
 
 	bool bClick = false;
 	bool bReleased = true;
@@ -34,6 +36,8 @@ private:
 	float defaultSpeed = 200.f;
 	float defaultScale = 0.5f;
 	int numFrames = 1;
+
+	bool disabledTip = false;
 
 };
 

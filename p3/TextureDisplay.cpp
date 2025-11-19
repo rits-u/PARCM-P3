@@ -6,16 +6,19 @@
 #include "IconObject.h"
 #include "BGObject.h"
 #include "SpriteScript/SpriteController.h"
+#include "TooltipScript/TooltipController.h"	
 
 
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
-	this->loadedAsset = 0;
-	this->assetsTotal = 14;
 }
 
 void TextureDisplay::initialize()
 {
+	this->loadedAsset = 0;
+	this->assetsTotal = 47;
+	makeLoadingBar();
+	this->loadingBar->updateLoadingBar((float)this->loadedAsset / (float)this->assetsTotal);
 	this->threadPool.StartScheduling();
 }
 
@@ -53,17 +56,16 @@ void TextureDisplay::update(sf::Time deltaTime)
 
 		this->ticks = 0;
 	}
-
-
 }
 
 void TextureDisplay::OnFinishedExecution()
 {
-	
 	this->loadedAsset++;
+	this->loadingBar->updateLoadingBar((float)this->loadedAsset / (float)this->assetsTotal);
 	std::cout << "asset " << this->loadedAsset << std::endl;
-	
+
 	if (this->loadedAsset >= this->assetsTotal) {
+		IETThread::sleep(1250);
 		spawnAllObjects();
 		FadeOutAll();
 		IETThread::sleep(3000);
@@ -115,9 +117,20 @@ void TextureDisplay::FadeOutAll()
 	BGObject* logo = (BGObject*)GameObjectManager::getInstance()->findObjectByName("GameLogo");
 	logo->setIsFading(true);
 
-	SpriteController* controller = (SpriteController*)GameObjectManager::getInstance()->findObjectByName("SpriteController");
-	controller->getActor()->setIsFading(true);
+	SpriteController* sController = (SpriteController*)GameObjectManager::getInstance()->findObjectByName("SpriteController");
+	sController->getActor()->setIsFading(true);
 	GameObjectManager::getInstance()->deleteObjectByName("SpriteController");
+
+	TooltipController* tController = (TooltipController*)GameObjectManager::getInstance()->findObjectByName("TooltipController");
+	GameObjectManager::getInstance()->deleteObjectByName("TooltipController");
+
+	this->loadingBar->setIsFading(true);
+}
+
+void TextureDisplay::makeLoadingBar()
+{
+	this->loadingBar = new LoadingBar("LoadingBar", this->assetsTotal);
+	GameObjectManager::getInstance()->addObject(loadingBar);
 }
 
 void TextureDisplay::FadeInAll()

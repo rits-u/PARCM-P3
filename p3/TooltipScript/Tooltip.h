@@ -1,8 +1,9 @@
 #pragma once
 #include "../AGameObject.h"
 #include "../Manager/TextureManager.h"
+#include "../Utils/FadeTransition.h"
 
-class Tooltip : public AGameObject
+class Tooltip : public AGameObject, public FadeTransition
 {
 public:
 	Tooltip(const std::string& baseName, const int& tipCounter);
