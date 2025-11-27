@@ -2,7 +2,7 @@
 
 
 
-## Group Members - Pair 4
+## Group Members - Pair 3
 - Legaspi, Andrea Maxene
 - Vingno, Jan Elizabeth 
 
