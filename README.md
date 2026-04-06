@@ -1,5 +1,5 @@
 # PARCM-P3 Interactive Loading Screen
-
+This is a school project that showcases the use of multithreading to implement an interactive loading screen while assets are loaded in the background, maintaining a stable frame rate. It was developed using C++ in Visual Studio and SFML for rendering assets.
 
 
 ## Group Members - Pair 3
